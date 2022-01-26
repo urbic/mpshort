@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<project name="mpshort" default="compile" basedir=".">
+	
+	<property name="project.name" value="${ant.project.name}"/>
+	<property name="src" location="src"/>
+	<property name="src.tex" location="${src}/tex"/>
+	<property name="src.png" location="${src}/png"/>
+	<property name="src.pdf" location="${src}/pdf"/>
+	<property name="src.mp" location="${src}/mp"/>
+	<property name="target" location="target"/>
+	<property name="target" location="target"/>
+	<property name="target.mp" location="${target}/mp"/>
+	<property name="target.pdf" location="${target}/pdf"/>
+		
+	<target name="compile" depends="figures">
+		<mkdir dir="${target}"/>
+		<exec outputproperty="git.ahash" executable="git">
+			<arg value="log"/>
+			<arg value="--pretty=%H"/>
+			<arg value="-1"/>
+		</exec>
+		<exec outputproperty="kpsexpand.TEXINPUTS" executable="kpsexpand">
+			<arg value="$TEXINPUTS"/>
+		</exec>
+		<exec outputproperty="kpsexpand.MPINPUTS" executable="kpsexpand">
+			<arg value="$MPINPUTS"/>
+		</exec>
+		<echo message="${git.ahash}" file="${target}/${project.name}.githash"/>
+		<exec executable="latexmk" dir="${target}">
+			<env key="TEXINPUTS" value="${kpsexpand.TEXINPUTS}:${src.tex}:${src.pdf}:${src.png}:${target.pdf}"/>
+			<env key="MPINPUTS" value="${kpsexpand.MPINPUTS}:${src.mp}"/>
+			<arg value="--lualatex"/>
+			<!--arg value="- -pvc"/-->
+			<!--arg value="- -verbose"/-->
+			<!--arg value="- -log"/-->
+			<arg value="--file-line-error"/>
+			<arg value="--recorder"/>
+			<arg value="${src.tex}/${project.name}"/>
+		</exec>
+	</target>
+
+	<target name="galley" depends="compile">
+		<exec executable="pdfnup" dir="${target}">
+			<arg value="-q"/>
+			<arg value="--nup"/>
+			<arg value="2x1"/>
+			<arg value="--a4paper"/>
+			<arg value="--outfile"/>
+			<arg value="${target}/${project.name}-galley.pdf"/>
+			<arg value="${target}/${project.name}.pdf"/>
+			<arg value="{},-"/>
+		</exec>
+	</target>
+
+	<target name="figures">
+		<!--mkdir dir="${target.mp}"/>
+		<mkdir dir="${target.pdf}"/-->
+		<!--copy todir="${target.mp}">
+			<fileset dir="${src.mp}" includes="*.mp"/>
+		</copy-->
+		<exec outputproperty="kpsexpand.TEXINPUTS" executable="kpsexpand">
+			<arg value="$TEXINPUTS"/>
+		</exec>
+		<exec outputproperty="kpsexpand.MPINPUTS" executable="kpsexpand">
+			<arg value="$MPINPUTS"/>
+		</exec>
+		<!--apply executable="mpost" dir="${target.mp}" relative="true">
+			<env key="TEXINPUTS" value="${kpsexpand.TEXINPUTS}:${src.tex}:${src.png}:${src.pdf}"/>
+			<env key="MPINPUTS" value="${kpsexpand.MPINPUTS}:${src.tex}:${src.png}:${src.mp}:${target.mp}"/>
+			<srcfile/>
+			<fileset dir="${target.mp}" includes="*.mp"/>
+			<mapper type="glob" from="*.mp" to="*.svg"/>
+		</apply-->
+		<!--apply executable="inkscape">
+			<srcfile/>
+			<arg value="-A"/>
+			<targetfile/>
+			<fileset dir="${target.mp}" includes="*.svg"/>
+			<mapper type="glob" from="*.svg" to="${target.pdf}/*.pdf"/>
+		</apply-->
+	</target>
+
+	<target name="view" depends="compile">
+		<exec executable="okular" dir="${target}">
+			<arg value="--unique"/>
+			<arg value="${project.name}.pdf"/>
+		</exec>
+	</target>
+
+	<target name="archive">
+		<exec outputproperty="git.ahash" executable="git">
+            <arg value="log"/>
+            <arg value="--pretty=git%ct.%h"/>
+            <arg value="-1"/>
+        </exec>
+		<mkdir dir="${target}"/>
+		<exec executable="git">
+			<arg value="archive"/>
+			<arg value="--prefix=${project.name}/"/>
+			<arg value="-o${target}/${project.name}-${git.ahash}.tar.xz"/>
+			<arg value="HEAD"/>
+		</exec>
+	</target>
+
+	<target name="clean">
+		<delete dir="${target}"/>
+	</target>
+
+</project>

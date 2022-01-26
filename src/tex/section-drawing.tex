@@ -1,0 +1,268 @@
+\sectionwithlogo{Рисование}{%
+	\scalebox{.8}{\input{figure-path-linejoin-mitered}}\\[1ex]
+	\scalebox{.8}{\input{figure-path-linejoin-rounded}}\\[1ex]
+	\scalebox{.8}{\input{figure-path-linejoin-beveled}}%
+	}
+
+\begin{frame}{Рисование}
+\large
+В~\hologo{METAPOST} рисование осуществляется командами
+\literal{draw}~и~\literal{fill}.
+\end{frame}
+
+\begin{frame}{Примеры рисования}
+\begin{columns}
+\column{.25\textwidth}
+\centerline{\input{figure-draw-unitsquare}}%
+\column{.75\textwidth}
+\begin{programlisting}
+\alert{draw} unitsquare scaled 2cm;
+\end{programlisting}
+\end{columns}
+\bigskip
+\begin{columns}
+\column{.25\textwidth}
+\centerline{\input{figure-fill-unitsquare}}%
+\column{.75\textwidth}
+\begin{programlisting}
+\alert{fill} unitsquare scaled 2cm;
+\end{programlisting}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Примеры рисования}
+\begin{columns}
+\column{.25\textwidth}
+\centerline{\input{figure-draw-quartercircle}}%
+\column{.75\textwidth}
+\begin{programlisting}
+\alert{draw} origin--quartercircle\par
+~~~~scaled 4cm;
+\end{programlisting}
+\end{columns}
+\bigskip
+\begin{columns}
+\column{.25\textwidth}
+\centerline{\fontsize{48}{56}\selectfont\textcolor{red}{?}}%
+\column{.75\textwidth}
+\begin{programlisting}
+\alert{fill} origin--quartercircle\par
+~~~~scaled 4cm;
+\end{programlisting}
+Ошибка:
+\begin{screen}
+\strut
+\only<1>{! Not a cycle.}%
+\only<2>{! Не цикл.}%
+\end{screen}
+\end{columns}
+\transdissolve<2>
+\end{frame}
+
+\begin{frame}{Цвет по умолчанию}
+\large
+Для рисования в~\hologo{METAPOST} используется
+\colorbox{fg}{\textcolor{bg}{чёрный}} цвет, если не указан иной.
+
+В~настоящем руководстве по понятным причинам в~качестве цвета по умолчанию
+выбран другой~— \textcolor{orange}{оранжевый}.
+\end{frame}
+
+\begin{frame}{Цветное рисование}
+\begin{columns}
+\column{.25\textwidth}
+\centerline{\input{figure-draw-unitsquare-green}}%
+\column{.75\textwidth}
+\begin{programlisting}
+draw unitsquare scaled 2cm\par
+~~~~\alert{withcolor green};
+\end{programlisting}
+\end{columns}
+\bigskip
+\begin{columns}
+\column{.25\textwidth}
+\centerline{\input{figure-fill-unitsquare-tomato}}%
+\column{.75\textwidth}
+\begin{programlisting}
+fill unitsquare scaled 2cm\par
+~~~~\alert{withcolor (1, .388, .278)};\par
+\textcolor{cyan}{\% цвет «tomato»}
+\end{programlisting}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Рисование различными перьями}
+\begin{columns}
+\column{.25\textwidth}
+\centerline{\input{figure-pencircle}}%
+\column{.75\textwidth}
+{\LARGE\literal{pencircle}}%
+\end{columns}
+\bigskip
+\begin{columns}
+\column{.25\textwidth}
+\centerline{\input{figure-penrazor}}%
+\column{.75\textwidth}
+{\LARGE\literal{penrazor}}%
+\end{columns}
+\bigskip
+\begin{columns}
+\column{.25\textwidth}
+\centerline{\input{figure-pensquare}}%
+\column{.75\textwidth}
+{\LARGE\literal{pensquare}}%
+\end{columns}
+\end{frame}
+
+\begin{frame}{Перо «\literal{pencircle}»}
+\begin{columns}
+\column{.25\textwidth}
+\centerline{%
+\only<1>{\input{figure-draw-pencircle}}%
+\only<2>{\input{figure-draw-pencircle-marked}}%
+}%
+\column{.75\textwidth}
+\begin{programlisting}
+draw fullcircle\par
+~~~~slanted .25 scaled 2cm\par
+~~~~\alert{withpen pencircle\par
+~~~~~~~~scaled 3bp};
+\end{programlisting}
+\end{columns}
+\bigskip
+\begin{columns}
+\column{.25\textwidth}
+\centerline{%
+\only<1>{\input{figure-draw-pencircle-scaled}}%
+\only<2>{\input{figure-draw-pencircle-scaled-marked}}%
+}%
+\column{.75\textwidth}
+\begin{programlisting}
+draw fullcircle\par
+~~~~slanted .25 scaled 2cm\par
+~~~~\alert{withpen pencircle\par
+~~~~~~~~scaled 6bp};
+\end{programlisting}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Перо «\literal{penrazor}»}
+\begin{columns}
+\column{.25\textwidth}
+\centerline{%
+\only<1>{\input{figure-draw-penrazor}}%
+\only<2>{\input{figure-draw-penrazor-marked}}%
+}%
+\column{.75\textwidth}
+\begin{programlisting}
+draw fullcircle\par
+~~~~slanted .25 scaled 2cm\par
+~~~~\alert{withpen penrazor scaled 6bp};
+\end{programlisting}
+\end{columns}
+\bigskip
+\begin{columns}
+\column{.25\textwidth}
+\centerline{%
+\only<1>{\input{figure-draw-penrazor-rotated}}%
+\only<2>{\input{figure-draw-penrazor-rotated-marked}}%
+}%
+\column{.75\textwidth}
+\begin{programlisting}
+draw fullcircle\par
+~~~~slanted .25 scaled 2cm\par
+~~~~\alert{withpen penrazor\par
+~~~~~~~~rotated 60 scaled 6bp};
+\end{programlisting}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Перо «\literal{pensquare}»}
+\begin{columns}
+\column{.25\textwidth}
+\centerline{%
+\only<1>{\input{figure-draw-pensquare}}%
+\only<2>{\input{figure-draw-pensquare-marked}}%
+}%
+\column{.75\textwidth}
+\begin{programlisting}
+draw fullcircle\par
+~~~~slanted .25 scaled 2cm\par
+~~~~\alert{withpen pensquare\par
+~~~~~~~~rotated 60\par
+~~~~~~~~scaled 6bp};
+\end{programlisting}
+\end{columns}
+\bigskip
+\begin{columns}
+\column{.25\textwidth}
+\centerline{%
+\only<1>{\input{figure-draw-pensquare-yscaled}}%
+\only<2>{\input{figure-draw-pensquare-yscaled-marked}}%
+}%
+\column{.75\textwidth}
+\begin{programlisting}
+draw fullcircle\par
+~~~~slanted .25 scaled 2cm\par
+~~~~\alert{withpen pensquare\par
+~~~~~~~~yscaled 3\par
+~~~~~~~~rotated 60\par
+~~~~~~~~scaled 6bp};
+\end{programlisting}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Стрелки}
+\begin{columns}
+\column{.25\textwidth}
+\centerline{%
+\only<1>{\input{figure-drawarrow}}%
+\only<2>{\input{figure-drawarrow-reverse}}%
+\only<3>{\input{figure-drawdblarrow}}%
+}%
+\column{.75\textwidth}
+\begin{programlisting}
+\alert{\only<1,2>{drawarrow}\only<3>{drawdblarrow}}\par
+~~~~\only<2>{\alert{reverse(}}(0, 2cm)\{down\}\par
+~~~~~~~~..(2cm, 2cm)\{dir 135\}\par
+~~~~~~~~..\{dir -45\}(2cm, 0)\only<2>{\alert{)}}\par
+~~~~withpen pencircle\par
+~~~~~~~~scaled bp;
+\end{programlisting}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Острые углы}
+\begin{columns}
+\column{.5\textwidth}
+\centerline{%
+\only<1>{\input{figure-path-linejoin-mitered}}%
+\only<2>{\input{figure-path-linejoin-rounded}}%
+\only<3>{\input{figure-path-linejoin-beveled}}%
+}%
+\column{.5\textwidth}
+\begin{programlisting}
+linejoin:=\alert{\only<1>{mitered}\only<2>{rounded}\only<3>{beveled}};\par
+draw p;
+\end{programlisting}
+\end{columns}
+\transdissolve<2->
+\end{frame}
+
+\begin{frame}{Концевые точки}
+\begin{columns}
+\column{.5\textwidth}
+\centerline{%
+\only<1>{\input{figure-path-linecap-butt}}%
+\only<2>{\input{figure-path-linecap-rounded}}%
+\only<3>{\input{figure-path-linecap-squared}}%
+}%
+\column{.5\textwidth}
+\begin{programlisting}
+linecap:=\alert{\only<1>{butt}\only<2>{rounded}\only<3>{squared}};\par
+draw p;
+\end{programlisting}
+\end{columns}
+\transdissolve<2->
+\end{frame}
+

@@ -1,0 +1,335 @@
+\sectionwithlogo{Надписи}
+	{\input{figure-metapost-shadowed}}
+
+\begin{frame}{Подготовка надписей}
+\hologo{METAPOST} позволяет размещать на~картинке надписи.
+
+\hologo{METAPOST} может использовать внешние программы для подготовки
+надписей~— troff и~\TeX.
+
+Изучение всех возможностей систем troff и~\TeX\ не входит в~наши планы. Мы
+совершенно обойдём вниманием troff, но обсудим простейшие и~важнейшие
+возможности~\TeX.
+\end{frame}
+
+\begin{frame}{Введение в~\TeX}
+\TeX~— система компьютерной вёрстки, созданная уже упомянутым
+профессором Кнутом.
+
+\alert{\TeX\ произносится отнюдь не как [текс], а~как [тех].}
+
+Особенностью~\TeX\ является превосходная поддержка набора математических
+формул.
+
+Между прочим, это руководство подготовлено в~\TeX.
+\end{frame}
+
+\begin{frame}{Назначение и~особенности~\TeX}
+Назначение системы~\TeX\ примерно то~же самое, что и~у~известных программ
+Microsoft Word, OpenOffice Writer, Adobe Pagemaker, QuarkXPress и~подобных.
+
+Однако, подобно системе~\hologo{METAPOST}, \TeX\ \alert{не} является системой
+WYSIWYG. Будущая вёрстка готовится как программа, в~которой обычный текст
+перемежается с~управляющими командами (кстати, макрокомандами), которые влияют
+на вид документа. Для получения документа, который можно печатать, требуется
+компиляция.
+
+Это обстоятельство несколько затрудняет работу, однако именно оно является
+причиной великолепного полиграфического качества документов, подготовленных
+в~\TeX, и~стилевого их единообразия.
+\end{frame}
+
+\begin{frame}{Простейшие \TeX{}нические решения}
+\begin{large}
+\begin{tabular}{rl}
+\literal{Просто текст}
+&\rmfamily Просто текст
+\\[1ex]
+\literal{\textbackslash textit\{Курсивный\} текст}
+&\rmfamily\textit{Курсивный} текст
+\\[1ex]
+\literal{\textbackslash textbf\{Жирный\} текст}
+&\rmfamily\textbf{Жирный} текст
+\\[1ex]
+\literal{\textbackslash textit\{\textbackslash textbf\{Жирный курсив\}\}}
+&\rmfamily\textit{\textbf{Жирный курсив}}
+\\[1ex]
+\literal{\textbackslash texttt\{Моноширинный\} текст}
+&\rmfamily\texttt{Моноширинный} текст
+\\[1ex]
+\literal{Формула \$x\$}
+&\rmfamily Формула $x$
+\end{tabular}
+\end{large}
+\end{frame}
+
+\begin{frame}{Простейшие \TeX{}нические решения}
+\begin{large}
+\begin{tabular}{rl}
+\literal{\$a+b\$}
+&$a+b$
+\\[1ex]
+\literal{\$a-b=2\$}
+&$a-b=2$
+\\[1ex]
+\literal{\$\textbackslash frac12\$}
+&$\frac12$
+\\[1ex]
+\literal{\$\textbackslash frac1\{12\}\$}
+&$\frac1{12}$
+\\[1ex]
+\literal{\$\textbackslash frac\{123\}\{456\}\$}
+&$\frac{123}{456}$
+\\[1ex]
+\literal{\$\textbackslash sqrt2\$}
+&$\sqrt2$
+\\[1ex]
+\literal{\$\textbackslash root3\textbackslash of2\$}
+&$\sqrt[3]2$
+\\[1ex]
+\literal{\$\textbackslash alpha\textbackslash beta\textbackslash
+gamma\textbackslash ldots\textbackslash omega\$}
+&$\alpha\beta\gamma\ldots\omega$
+\\[1ex]
+\literal{\$z\_2\$}
+&$z_2$
+\\[1ex]
+\literal{\$z\textasciicircum\{12\}\$}
+&$z^{12}$
+\\[1ex]
+\literal{\$\textbackslash cos\textasciicircum2\textbackslash
+theta+\textbackslash sin\textasciicircum2\textbackslash theta=1\$}
+&$\cos^2\theta+\sin^2\theta=1$
+\end{tabular}
+\end{large}
+\end{frame}
+
+\begin{frame}{Простейшие \TeX{}нические решения}
+\begin{large}
+\begin{tabular}{rl}
+\literal{\$x\textbackslash in[-\textbackslash pi;\textbackslash pi)\$}
+&$x\in[-\pi;\pi)$
+\\[1ex]
+\literal{\$x\textbackslash in\textbackslash\{2,3,5,7,11,13,17\textbackslash\}\$}
+&$x\in\{2,3,5,7,11,13,17\}$
+\\[1ex]
+\literal{\$\textbackslash mathbb N\textbackslash subset\textbackslash mathbb Z\$}
+&$\mathbb N\subset\mathbb Z$
+\\[1ex]
+\literal{\$|\textbackslash tg x|>|\textbackslash
+sin x|\$ при \$x>0\$}
+&\rmfamily$\mathopen|\tg x\mathclose|>\mathopen|\sin x\mathclose|$ при $x>0$
+\\[1ex]
+\literal{\$\textbackslash sqrt\{ab\}\textbackslash leqslant\textbackslash
+frac\{a+b\}2\$}
+&$\sqrt{ab}\leqslant\frac{a+b}2$
+\\[1ex]
+\literal{\$\textbackslash sqrt\{ab\}\textbackslash geqslant\textbackslash
+frac\{2ab\}\{a+b\}\$}
+&$\sqrt{ab}\geqslant\frac{2ab}{a+b}$
+\end{tabular}
+\end{large}
+\end{frame}
+
+\begin{frame}{Более сложный пример: формула Коши}
+\begin{Huge}
+	\[
+	\alert<2>{f(z)=}
+		\alert<3>{\frac1{2\pi i}}
+		\alert<4>{\oint\limits_{\partial U_\varepsilon(z)}}
+		\alert<5>{\frac{f(\zeta)\,d\zeta}{\zeta-z}}
+	\]
+\end{Huge}
+
+\begin{center}
+\LARGE
+\begin{programlisting}
+\$\alert<2>{f(z)=}\alert<3>{\textbackslash frac1\{2\textbackslash pi i\}}\par
+~~~~\alert<4>{\textbackslash oint\textbackslash limits\_%
+\{\textbackslash partial U\_\textbackslash varepsilon(z)\}}\par
+~~~~\alert<5>{\textbackslash frac\{f(\textbackslash
+zeta)\textbackslash,d\textbackslash zeta\}\{\textbackslash zeta-z\}}\$\par
+\end{programlisting}
+\end{center}
+\end{frame}
+
+\begin{frame}{Где почитать про \TeX}
+Конечно, всех этих примеров недостаточно, чтобы освоить все \TeX{}нические
+тонкости.
+
+Для более подробного знакомства с~системой \TeX\ предлагаем другие источники:
+
+\begin{thebibliography}{}
+\bibitem{bib:Knuth:TheTeXbookRDTeX}
+Всё про \TeX
+\newblock
+Кнут, Д.~Е.
+\newblock
+Протвино~: АО RD\TeX, 1993.~— ISBN~5-900614-01-8
+
+\bibitem{bib:Knuth:TheTeXbookWilliams}
+Всё про \TeX
+\newblock
+Кнут, Дональд~Э.
+\newblock
+Москва~: Вильямс, 2003.~— ISBN~5-8459-0382-3~(рус.)
+\end{thebibliography}
+\end{frame}
+
+\begin{frame}{Где почитать про \TeX\ {\mdseries\itshape(продолжение)}}
+\begin{thebibliography}{}
+\bibitem{bib:Lvovskij:LaTeX}
+Набор и~вёрстка в~системе \LaTeX
+\newblock
+Львовский, С. М.
+%— 3-е изд., испр. и доп.
+\newblock
+Москва~: МЦНМО, 2003.~— ISBN~5-94057-091-7
+\end{thebibliography}
+\end{frame}
+
+\begin{frame}{\TeX{}овские фрагменты как объекты \literal{picture}}
+\TeX{}овские вставки с~точки зрения \hologo{METAPOST} являются объектами типа
+\literal{picture}. Код на~языке \TeX\ следует поместить между словами
+\literal{btex} и~\literal{etex}:
+\begin{center}
+\Large
+\literal{btex~}\replaceable{\TeX{}овский код}\literal{~etex}
+\end{center}
+
+Например:
+\begin{programlisting}
+btex \$\textbackslash frac1\{\textbackslash sqrt3\}\$ etex
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Препроцессор}
+Перед тем как \hologo{METAPOST} приступает к~компиляции исходного текста, этот
+текст подвергается обработке препроцессором.
+
+Препроцессор отыскивает фрагменты \literal{btex~…~etex}, извлекает их
+в~\TeX{}овский файл, затем файл компилируется \TeX{}ом. Результат этой
+компиляции обрабатывается специальной программой, преобразующей его в~код на
+языке \hologo{METAPOST}. Этот код вставляется в~исходный текст рисунка как
+выражение типа \literal{picture}. Компилятор \hologo{METAPOST} видит только
+лишь результат этой закулисной деятельности.
+\end{frame}
+
+\begin{frame}{\TeX{}овские ошибки}
+Нет необходимости вникать в~эти подробности, если \TeX{}овский код в~порядке.
+Если~же он содержит ошибки с~точки зрения \TeX, \hologo{METAPOST} выдаёт ошибку
+\begin{screen}
+\only<1>{! Unable to make mpx file.}%
+\only<2>{! Невозможно создать mpx-файл.}%
+\end{screen}
+Для исправления таких ошибок необходимы определённые \TeX{}нические познания.
+\transdissolve<2>
+\end{frame}
+
+\begin{frame}{Вставка \TeX{}овских фрагментов в~\hologo{METAPOST}}
+Если картинку \literal{btex~…~etex} нужно включить в~рисунок, можно
+использовать команду \literal{draw}:
+\begin{programlisting}
+draw btex \$\textbackslash frac1\{\textbackslash sqrt3\}\$ etex;
+\end{programlisting}
+
+Однако такая команда размещает картинку таким образом, что левый нижний угол
+картинки попадает в~начало координат. Для более точного размещения картинку
+нужно сдвинуть.
+\end{frame}
+
+\begin{frame}{Команда \literal{label}}
+В~библиотеке \nolinkurl{plain.mp} определена макрокоманда \literal{label},
+которая позволяет разместить \TeX{}овскую надпись либо по~центру в~данной точке
+рисунка, либо поблизости в~стороне от~данной точки. Поддерживаются восемь
+положений: справа, сверху, слева и~снизу, и~ещё четыре промежуточных.
+
+Синтаксис команды:
+\begin{center}
+\Large
+\literal{label(}\replaceable{картинка}\literal{,~}\replaceable{точка}\literal{)}
+\literal{label.}\replaceable{суффикс}\literal{(}\replaceable{картинка}\literal{, }\replaceable{точка}\literal{)}
+\end{center}
+\end{frame}
+
+\begin{frame}{Команда \literal{label.}\replaceable{суффикс}}
+В~команде \literal{label} за~положение \replaceable{картинки} по~отношению
+к~\replaceable{точке} отвечает \replaceable{суффикс}. Допустимые
+\replaceable{суффиксы}:
+
+\bigskip
+
+\centerline{\input{figure-label-suffices}}
+\end{frame}
+
+\begin{frame}{Пример размещения надписей}
+\begin{columns}
+\column{.33333\textwidth}
+\begin{center}
+\only<1>{\input{figure-octagon}}%
+\only<2>{\input{figure-octagon-label-rt}}%
+\only<3>{\input{figure-octagon-label-urt}}%
+\only<4>{\input{figure-octagon-label-top}}%
+\only<5>{\input{figure-octagon-label-ulft}}%
+\only<6>{\input{figure-octagon-label-lft}}%
+\only<7>{\input{figure-octagon-label-llft}}%
+\only<8>{\input{figure-octagon-label-bot}}%
+\only<9>{\input{figure-octagon-label-lrt}}%
+\only<10>{\input{figure-octagon-label}}%
+\end{center}
+\column{.66667\textwidth}
+\only<1>{%
+\large
+\begin{programlisting}
+draw\par
+~~~~for d:=0 upto 7:\par
+~~~~~~~~cm*dir(45d)--\par
+~~~~endfor\par
+~~~~cycle;\par
+\end{programlisting}%
+}%
+\only<2-10>{%
+\large
+\begin{programlisting}
+label\only<2-9>{.}%
+\alert<2-9>{%
+\only<2>{rt}%
+\only<3>{urt}%
+\only<4>{top}%
+\only<5>{ulft}%
+\only<6>{lft}%
+\only<7>{llft}%
+\only<8>{bot}%
+\only<9>{lrt}%
+}%
+\only<10>{}%
+(\par
+~~~~~~~~btex \$\alert<2-10>{P%
+\only<2>{\_0}%
+\only<3>{\_1}%
+\only<4>{\_2}%
+\only<5>{\_3}%
+\only<6>{\_4}%
+\only<7>{\_5}%
+\only<8>{\_6}%
+\only<9>{\_7}%
+\only<10>{}%
+}\$ etex,\par
+~~~~~~~~%
+\alert<2-10>{%
+\only<2>{cm*right}%
+\only<3>{cm*dir 45}%
+\only<4>{cm*up}%
+\only<5>{cm*dir 135}%
+\only<6>{cm*left}%
+\only<7>{cm*dir 225}%
+\only<8>{cm*down}%
+\only<9>{cm*dir 315}%
+\only<10>{origin}%
+}\par
+~~~~);
+\end{programlisting}%
+}%
+\end{columns}
+\transdissolve<2-10>
+\end{frame}

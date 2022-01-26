@@ -1,0 +1,246 @@
+\sectionwithlogo{Картинки}
+	{\input{figure-houses}}
+
+\begin{frame}{Переменная \literal{currentpicture}}
+В~процессе рисования с~помощью команд \literal{draw} и~\literal{fill} текущее
+изображение сохраняется в~переменной \literal{currentpicture} типа
+\literal{picture}.
+
+Команда \literal{endfig}, помимо прочих действий, выводит содержимое переменной
+\literal{currentpicture} в~файл в~виде последовательности команд на языке
+PostScript. Команда \literal{beginfig} «обнуляет» эту переменную, а~также
+присваивает номер будущей картинки (обычно этот номер включается в~имя
+PostScript-файла).
+
+Внутренняя структура переменных типа \literal{picture} сложна. Она позволяет
+хранить элементы изображения (пути) вместе с~атрибутами рисования (цвет линии,
+её толщина, цвет заливки циклического контура), а~также последовательность,
+в~которой эти элементы рисовались.
+\end{frame}
+
+\begin{frame}{Рисование на картинках и~команда \literal{addto}}
+Имеется возможность заготавливать картинки впрок для многократного
+использования. Можно создавать библиотеки готовых картинок.
+
+Для рисования на картинках, отличных от \literal{currentpicture},
+в~\hologo{METAPOST} имеется команда \literal{addto}:
+\begin{center}
+\only<1>{{\large\literal{addto~}\replaceable{картинка}\literal{~doublepath~}\replaceable{путь}~\replaceable{опции}}\\[3ex]
+(аналог \literal{draw~}\replaceable{путь}~\replaceable{опции})}%
+\only<2>{{\large\literal{addto~}\replaceable{картинка}\literal{~contour~}\replaceable{циклический
+путь}~\replaceable{опции}}\\[3ex]
+(аналог \literal{fill~}\replaceable{циклический путь}~\replaceable{опции})}%
+\only<3>{{\large\literal{addto~}\replaceable{картинка}\literal{~also~}\replaceable{картинка}}\\[3ex]
+(аналог \literal{draw~}\replaceable{картинка})}%
+\end{center}
+\end{frame}
+
+\begin{frame}{Пример: сумасшедшие домики}
+\begin{columns}
+\column{.5\textwidth}
+Проиллюстрируем сказанное примером~— рисованием посёлка из~сумасшедших домиков
+(это рисунок, открывающий настоящий раздел).
+
+\column{.5\textwidth}
+\centerline{\input{figure-houses}}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Пример: сумасшедшие домики}
+Все домики на~рисунке отличаются друг от~друга разными аффинными
+преобразованиями, выбранными случайно. Они равномерно разбросаны по~полю
+рисунка, имеют размеры, немного и~случайно отклоняющиеся от~некоторого среднего
+размера, а~накже наклоны, небольшие и~случайные размеры.
+
+\bigskip
+
+\begin{columns}[onlytextwidth]
+\column{.75\textwidth}
+Все эти сумасшедшие домики получаются нанесением на поле рисунка одной и~той~же
+картинки (на~ней изображён один совершенно нормальный домик), подвергнутой
+различным аффинным преобразованиям. Картинка заранее заготовлена в~переменной
+\literal{house}, имеющей тип \literal{picture}:
+\column{.25\textwidth}
+\centerline{\input{figure-house}}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Пример: сумасшедшие домики}
+\only<1>{Объявляем новую переменную-картинку \literal{house}.
+Инициализируем её пустой картинкой…}%
+\only<2>{Рисуем в~переменную \literal{house} крышу…}%
+\only<3>{Стену…}%
+\only<4>{Чёрный проём окна…}%
+\only<5>{Оконную раму…}%
+\only<6>{И, наконец, наносим на наш рисунок (то~есть в~переменную
+\literal{currentpicture}) 50~копий картинки \literal{house}, подвергнутых
+сумасшедшим аффинным преобразованиям. Пояснения последуют.}%
+\begin{programlisting}
+\only<1>{%
+picture house;\par
+house=nullpicture;\par}%
+\only<2>{%
+addto house contour\par
+~~~~(-.2, 1)--(1.2, 1)--(.5, 1.5)--cycle\par
+~~~~withcolor .5orange;\par}%
+\only<3>{%
+addto house contour unitsquare\par
+~~~~withcolor .5red;\par}%
+\only<4>{%
+addto house contour\par
+~~~~unitsquare scaled .5 shifted (.25, .25)\par
+~~~~withcolor black;\par}%
+\only<5>{%
+addto house doublepath\par
+~~~~unitsquare scaled .5 shifted (.25, .25)\par
+~~~~withcolor orange;\par
+addto house doublepath\par
+~~~~(.25, .5)--(.75, .5)\par
+~~~~withcolor orange;\par
+addto house doublepath\par
+~~~~(.5, .25)--(.5, .75)\par
+~~~~withcolor orange;\par}%
+\only<6>{%
+for i:=1 upto 50:\par
+~~~~draw house\par
+~~~~~~~~slanted (normaldeviate*.005cm)\par
+~~~~~~~~scaled (.25cm+normaldeviate*.05cm)\par
+~~~~~~~~shifted (uniformdeviate(3cm), uniformdeviate(4cm));\par
+endfor}%
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Команда \literal{uniformdeviate}}
+\begin{columns}[onlytextwidth]
+\column{.25\textwidth}
+\input{figure-uniformdeviate}
+\column{.75\textwidth}
+
+По площади квадратика размером 2~см равномерно разбросаны 300~точек, чьи
+координаты (и~абсцисса, и~ордината) получены с~помощью команды
+\literal{uniformdeviate(2cm)}.
+
+\end{columns}
+
+Примитивная команда
+\literal{uniformdeviate(}\replaceable{число}\literal{)}
+возвращает (псевдо)случайное число, равномерно распределённое на~промежутке
+от~$0$ до~\replaceable{числа}.
+
+\begin{programlisting}
+for i:=1 upto 300:\par
+~~~~draw \alert{(uniformdeviate(2cm), uniformdeviate(2cm))}\par
+~~~~~~~~withpen pensquare scaled bp\par
+~~~~~~~~withcolor red;\par
+endfor
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Команда \literal{normaldeviate}}
+\begin{columns}[onlytextwidth]
+\column{.25\textwidth}
+\input{figure-normaldeviate}
+\column{.75\textwidth}
+А~теперь разбросаны 300~точек, чьи координаты получены с~помощью команды
+\literal{normaldeviate}. Это похоже на~прицельную стрельбу в~центр квадрата,
+при которой кучность по~горизонтали несколько выше, чем по~вертикали.
+\end{columns}
+\begin{programlisting}
+for i:=1 upto 300:\par
+~~~~draw \alert{(cm+normaldeviate*2mm, cm+normaldeviate*5mm)}\par
+~~~~~~~~withpen pensquare scaled bp\par
+~~~~~~~~withcolor red;\par
+endfor
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Команда \literal{normaldeviate}}
+Примитивная команда \literal{normaldeviate} возвращает
+\emph{нормально"=распределённое} (псевдо)случайное число. Плотность
+распределения выше для чисел вблизи нуля и~убывает до~нуля на~отдалении.
+Бо́льшие по~модулю числа имеют меньшую вероятность появления. Эта плотность
+описывается формулой $e^{-x^2\fracslash2}$, её график имеет колоколообразную
+форму:
+\begin{center}
+\input{figure-gaussdensity}
+\end{center}
+
+Такое распределение ещё называют \emph{гауссовским}.
+\end{frame}
+
+\begin{frame}{Вырезание}
+\begin{columns}[onlytextwidth,c]
+\column{.33333\textwidth}
+\only<1>{\input{figure-clipping-1}}%
+\only<2>{\input{figure-clipping-2}}%
+\column{.6\textwidth}
+\begin{programlisting}
+for j:=-10 upto 10:\par
+~~~~for i:=-10 upto 10:\par
+~~~~~~~~fill fullcircle\par
+~~~~~~~~~~~~scaled mm\par
+~~~~~~~~~~~~shifted ((i, j)*1.5mm)\par
+~~~~~~~~~~~~withcolor .5red;\par
+~~~~endfor\par
+endfor\par
+\uncover<2>{%
+\leavevmode\par
+\alert{clip} currentpicture\par
+~~~~\alert{to} fullcircle scaled 3cm;\par}%
+\end{programlisting}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Текстуры}
+\begin{columns}[onlytextwidth]
+\column{.33333\textwidth}
+\centering
+\only<1>{\input{figure-texture-1}}%
+\only<2>{\input{figure-texture-2}}%
+\only<3>{\input{figure-texture-3}}%
+\column{.6\textwidth}
+\only<1-2>{
+
+Если требуется наложить описанное изображение на рисунок, где уже что-то
+изображено, описанный приём не сработает.
+
+Дело в~том, что последняя команда \literal{clip currentpicture to~…} ограничит
+всё ранее нарисованное внутри пути \literal{fullcircle scaled 3cm}.}%
+\only<3>{%
+Выход из~положения заключается в~том, чтобы наносить текстуру не прямо
+на~текущий рисунок в~переменной \literal{currentpicture}, а~на~вспомогательную
+картинку. Затем нужно применить команду \literal{clip} к~этой вспомогательной
+картинке. Наконец, следует наложить вспомогательную картинку
+на~\literal{currentpicture}.}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Текстуры: код\only<2>{ {\mdseries\itshape(продолжение)}}}
+\begin{columns}[onlytextwidth]
+\column{.33333\textwidth}
+\centering
+\input{figure-texture-3}%
+\column{.6\textwidth}
+\begin{programlisting}
+\only<1>{fill unitsquare scaled 2.5cm\par%
+~~~~shifted (-1.25cm, 0)\par
+~~~~withcolor .5green;\par
+\leavevmode\par
+\alert{picture tmpPic;\par
+tmpPic:=nullpicture;\par}%
+\leavevmode\par
+for j:=-10 upto 10:\par
+~~~~for i:=-10 upto 10:\par
+~~~~~~~~\alert{addto tmpPic contour}\par
+~~~~~~~~~~~~fullcircle scaled mm\par
+~~~~~~~~~~~~shifted ((i, j)*1.5mm)\par
+~~~~~~~~~~~~withcolor .5red;\par
+~~~~endfor\par
+endfor\par}%
+\only<2>{clip \alert{tmpPic} to fullcircle\par
+~~~~scaled 3cm;\par
+\leavevmode\par
+\alert{addto currentpicture also tmpPic;}}
+\end{programlisting}
+\end{columns}
+\end{frame}

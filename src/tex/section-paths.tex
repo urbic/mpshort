@@ -1,0 +1,433 @@
+\sectionwithlogo{Пути}{\scalebox{.8}{\input{figure-path-rotatingnumber-1}}}
+
+\begin{frame}{Полином Бернштейна}
+Задаётся $n+1$~точкой $z_0$, $z_1$,~$\ldots$, $z_n$
+(\emph{контрольные точки}).
+
+\emph{Полином Бернштейна\/} $n$"=й степени:
+	\[
+	z(t)=\sum_{i=0}^n\binom niz_i(1-t)^it^{n-i}.
+	\]
+
+Биномиальный коэффициент:
+	\[
+	\binom ni=\frac{n!}{i!(n-i)!}.
+	\]
+
+Назван в~честь советского математика Сергея Бернштейна.
+\end{frame}
+
+\begin{frame}{Кривые Безье}
+Кривые, заданные параметрически полиномом Бернштейна, называются \emph{кривыми
+Безье\/} соответствующей степени.
+
+Активно используются в~компьютерной графике для представления линий.
+
+В~\hologo{METAPOST} применяются кривые Безье $3$"=й степени.
+
+Названы в~честь французского инженера Пьера Безье (Piere Étienne Bésier),
+указавшего на их важность в~компьютерной графике.
+\end{frame}
+
+\begin{frame}{Свойства кривой Безье}
+\begin{itemize}
+\item
+выходит из точки~$z_0$ при~$t=0$
+\item
+приходит в~точку~$z_n$ при~$t=1$
+\item
+касательная в~точке~$z_0$ «смотрит» в~точку~$z_1$
+\item
+касательная в~точке~$z_n$ «смотрит» из точки~$z_{n-1}$
+\item
+при~$t\in[0;1]$ целиком содержится в~выпуклой оболочке всех контрольных точек
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Кривая Безье $0$"=й степени}
+	\[
+	z(t)\equiv z_0
+	\]
+\begin{center}
+\input{figure-besier-0}\\[4ex]
+точка
+\end{center}
+\end{frame}
+
+\begin{frame}{Кривая Безье $1$"=й степени}
+	\[
+	z(t)=z_0(1-t)+z_1t
+	\]
+\begin{center}
+\input{figure-besier-1}\\[4ex]
+прямая линия
+\end{center}
+\end{frame}
+
+\begin{frame}{Кривая Безье $2$"=й степени}
+	\[
+	z(t)=z_0(1-t)^2+2z_1(1-t)t+z_2t^2
+	\]
+\begin{center}
+\input{figure-besier-2}\\[4ex]
+парабола
+\end{center}
+\end{frame}
+
+\begin{frame}{Кривая Безье $3$"=й степени}
+	\[
+	z(t)=z_0(1-t)^3+3z_1(1-t)^2t+3z_2(1-t)t^2+z_3t^3
+	\]
+\begin{center}
+\input{figure-besier-3}\\[4ex]
+кубическая кривая (в~школе не проходят)
+\end{center}
+\end{frame}
+
+\begin{frame}{Преимущества кривых Безье $3$"=й степени}
+\begin{itemize}
+\item
+хорошо приближают типичные кривые линии
+\item
+в~памяти компьютера представляются восьмёркой чисел (координатами четырёх
+точек)
+\item
+строятся с~помощью простого рекурсивного алгоритма
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Построение точки~$z\bigl(\frac12\bigr)$ для кривой $3$"=й
+степени}
+\begin{center}
+\input{figure-besier-construction}
+\end{center}
+\end{frame}
+
+\begin{frame}{Построение кривых Безье $3$"=й степени}
+Точка $z\bigl(\frac12\bigr)$ строится, как показано на предыдущем слайде.
+Отрезок кривой при $t\in\bigl[0;\frac12\bigr]$, оказывается,~— это кривая
+с~контрольными точками $z_0$, $z_{01}$, $z_{0112}$, $z\bigl(\frac12\bigr)$.
+А~отрезок при $t\in\bigl[\frac12;1\bigr]$~— кривая с~контрольными точками
+$z\bigl(\frac12\bigr)$, $z_{1223}$, $z_{23}$, $z_3$.
+
+Для этих двух отрезков также находятся точки, отвечающие $t=\frac12$. Эти точки
+разбивают каждый из отрезков на половинки. Для них опять находятся «серединные»
+точки. Когда «серединных» точек будет достаточно много, они вычертят линию.
+\end{frame}
+
+\begin{frame}{Примеры кривых Безье $3$"=й степени}
+\begin{center}
+\input{figure-besier-example-1}\hfill
+\input{figure-besier-example-2}\hfill
+\input{figure-besier-example-5}\\[4ex]
+\input{figure-besier-example-3}\hfill
+\input{figure-besier-example-4}\hfill
+\input{figure-besier-example-6}
+\end{center}
+\end{frame}
+
+\begin{frame}{Пути в~\hologo{METAPOST}}
+\begin{columns}
+\column{.4\textwidth}
+\only<1>{\input{figure-path-seg}}
+\only<2>{\input{figure-path-seg-0}}
+\only<3>{\input{figure-path-seg-1}}
+\only<4>{\input{figure-path-seg-2}}
+\only<5>{\input{figure-path-seg-3}}
+\column{.6\textwidth}
+Пути в~\hologo{METAPOST} составлены из сегментов~— кривых Безье:\\
+\bigskip
+\pause
+
+{\Large
+\only<2>{первый}%
+\only<3>{второй}%
+\only<4>{третий}%
+\only<5>{четвёртый}%
+\ сегмент}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Использование путей в~\hologo{METAPOST}}
+\begin{columns}
+\column{.4\textwidth}
+\begin{center}
+\only<1>{\input{figure-path-draw}}%
+\only<2>{\input{figure-path-fill}}%
+\only<3>{\input{figure-path-clip}}%
+\end{center}
+\column{.6\textwidth}
+Пути можно:
+\begin{itemize}
+\item\alert<1>{начертить}
+\item\alert<2>{закрасить}
+\item\alert<3>{использовать как границу рисунка (to clip)}
+\transdissolve<2-3>
+\end{itemize}
+\end{columns}
+\begin{center}
+\uncover<2-3>{\alert{только \emph{циклические}!}}
+\end{center}
+\end{frame}
+
+\begin{frame}{Циклические пути}
+Путь называется \emph{замкнутым}, если его начальная и~конечная точки
+совпадают.
+
+Замкнутый путь, имеющий атрибут цикличности, называется \emph{циклическим}.
+
+Лишь циклические пути могут быть закрашены или использованы как граница
+рисунка.
+
+Атрибут цикличности устанавливается при создании пути.
+\end{frame}
+
+\begin{frame}{Число вращения}
+\only<1>{%
+Для замкнутых путей определяется \emph{число вращения}.
+
+Это количество полных оборотов, которые сделает единичный касательный вектор,
+если точка касания полностью обойдёт путь.
+
+}
+\begin{columns}
+\column{.6\textwidth}
+\begin{center}
+\only<2>{\input{figure-path-rotatingnumber-1}}%
+\only<3>{\input{figure-path-rotatingnumber-2}}%
+\only<4>{\input{figure-path-rotatingnumber-3}}%
+\end{center}
+\column{.4\textwidth}
+\only<2-4>{\large число вращения \alert{\only<2>{1}\only<3>{0}\only<4>{2}}}%
+\end{columns}
+\transdissolve<3-4>
+\end{frame}
+
+\begin{frame}{Предопределённые переменные~— пути}
+\begin{columns}
+\column{.5\textwidth}
+\begin{center}
+\only<1>{\input{figure-quartercircle}}%
+\only<2>{\input{figure-halfcircle}}%
+\only<3>{\input{figure-fullcircle}}%
+\only<4>{\input{figure-unitsquare}}%
+\end{center}
+\column{.5\textwidth}
+{\LARGE\literal{%
+\only<1>{quartercircle}%
+\only<2>{halfcircle}%
+\only<3>{fullcircle}%
+\only<4>{unitsquare}%
+}}%
+\end{columns}
+\bigskip
+\begin{center}
+\only<1>{четверть окружности радиуса~$\frac12$}%
+\only<2>{половина окружности радиуса~$\frac12$}%
+\only<3>{окружность радиуса~$\frac12$}%
+\only<1-3>{;\\центр в~начале координат}%
+\only<4>{единичный квадрат;\\левый нижний угол в~начале координат}%
+\only<3,4>{\\этот путь циклический}%
+\end{center}
+\end{frame}
+
+\begin{frame}{Ломаные}
+\begin{columns}
+\column{.4\textwidth}
+\begin{center}
+\only<1>{\input{figure-angular-1}}%
+\only<2>{\input{figure-angular-2}}%
+\only<3>{\input{figure-angular-3}}%
+\only<4>{\input{figure-angular-4}}
+\end{center}
+\column{.6\textwidth}
+\begin{programlisting}
+\only<1>{origin\par
+~~~~--(2.5cm, 1.5cm)}%
+\only<2>{origin\par
+~~~~--(2.5cm, 1.5cm)\par
+~~~~--(2.5cm, 0)}%
+\only<3>{origin\par
+~~~~--(2.5cm, 1.5cm)\par
+~~~~--(2.5cm, 0)\par
+~~~~--(cm, 2cm)}%
+\only<4>{origin\par
+~~~~--(2.5cm, 1.5cm)\par
+~~~~--(2.5cm, 0)\par
+~~~~--(cm, 2cm)\par
+~~~~\alert{--cycle}}
+\end{programlisting}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Связка путей «\literal{--}»}
+Из путей~$p_1$ и~$p_2$ образуется новый путь: он состоит из пути~$p_1$,
+\alert{прямолинейного} отрезка, соединяющего конец~$p_1$ с~началом~$p_2$,
+и~пути~$p_2$.
+\bigskip
+\begin{columns}
+\column{.5\textwidth}
+\begin{center}
+\only<1>{\input{figure-pathjoin}}%
+\only<2>{\input{figure-pathjoin-1}}
+\only<3>{\input{figure-pathjoin-2}}
+\end{center}
+\column{.5\textwidth}
+\begin{center}
+\begin{programlisting}
+\only<1>{p2\par
+p1}%
+\only<2>{p1--p2}%
+\only<3>{p1--p2--cycle}%
+\end{programlisting}
+\end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Связка путей «\literal{..}»}
+Из путей~$p_1$ и~$p_2$ образуется новый путь: он состоит из пути~$p_1$,
+\alert{криволинейного} отрезка, \alert{гладко} соединяющего конец~$p_1$
+с~началом~$p_2$, и пути~$p_2$.
+
+Детали того, как строится криволинейная связка, довольно сложны.
+\bigskip
+\begin{columns}
+\column{.5\textwidth}
+\begin{center}
+\only<1>{\input{figure-pathjoin}}%
+\only<2>{\input{figure-pathjoin-3}}
+\only<3>{\input{figure-pathjoin-4}}
+\end{center}
+\column{.5\textwidth}
+\begin{center}
+\begin{programlisting}
+\only<1>{p2\par
+p1}%
+\only<2>{p1..p2}%
+\only<3>{p1..p2..cycle}%
+\end{programlisting}
+\end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Связка путей «\literal{\&}»}
+Из путей~$p_1$ и~$p_2$ образуется новый путь: он получается присоединением
+$p_2$ к~$p_1$.
+
+Конец~$p_1$ должен совпадать с~началом~$p_2$, иначе ошибка:
+\begin{screen}
+\only<1>{! Paths don't touch; `\&' will be changed to `..'.}%
+\only<2>{! Пути не соединяются; `\&' будет заменён на `..'.}%
+\end{screen}
+\hologo{METAPOST} заменит опасную связку «\literal{\&}» на безопасную
+«\literal{..}».
+\transdissolve<2>
+\end{frame}
+
+\begin{frame}{Указание направлений}
+\begin{columns}
+\column{.4\textwidth}
+\only<1>{\input{figure-pathdir-1}}%
+\only<2>{\input{figure-pathdir-2}}%
+\only<3>{\input{figure-pathdir-3}}%
+\only<4>{\input{figure-pathdir-4}}%
+\only<5>{\input{figure-pathdir-5}}%
+\column{.6\textwidth}
+\begin{programlisting}
+z1\{dir
+\alert{\only<1>{-30}%
+\only<2>{0}%
+\only<3>{30}%
+\only<4>{60}%
+\only<5>{90}%
+}\}\par
+~~~~..\{dir -45\}z2
+\end{programlisting}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Параметрическая длина пути}
+Оператор \literal{length} вычисляет так называемую параметрическую длину. Это
+целое число~— количество сегментов кривых Безье, из которых составлен путь:
+\begin{center}
+\Large
+\literal{length}~$p$
+\end{center}
+\end{frame}
+
+\begin{frame}{Параметризация пути}
+Каждому числовому значению~$t\in[0;l]$, где~$l$~— параметрическая длина
+пути~$p$, можно поставить в~соответствие точку на этом пути.
+
+Пусть~$\alpha=[t]$ (целая часть~$t$), $\beta=\{t\}$ (дробная часть~$t$).
+
+Возьмём сегмент~$p_\alpha$ кривой Безье пути~$p$, имеющий
+номер~$\alpha$. Обозначим как $z_{0,1,2,3}$ контрольные точки
+этого сегмента. Возьмём точку, заданную значением~$\beta$ в~полиноме Бернштейна
+для этого сегмента:
+	\[
+	z(\beta)=(1-\beta)^3z_0+3(1-\beta)^2\beta z_1+3(1-\beta)\beta^2z_1+\beta^3z_3.
+	\]
+Полученная точка~$z(\beta)$ и~есть искомая точка на пути~$p$, отвечающая
+значению параметра~$t$.
+\end{frame}
+
+\begin{frame}{Оператор \literal{point of}}
+Оператор \literal{point of} делает все эти вычисления:
+\begin{center}
+\Large
+\literal{point~}$t$\literal{~of~}$p$
+\end{center}
+
+Значения~$t$, расположенные вне отрезка~$[0;l]$, сдвигаются в~нужную сторону,
+пока не окажутся в~пределах этого отрезка.
+
+Таким образом, \literal{point -1 of~}$p$ даст тот~же результат, что
+и~\literal{point 0 of~}$p$.
+
+\literal{point infinity of~}$p$~— это всегда конечная точка пути.
+(\literal{infinity}~— предопределённая числовая переменная, самое
+большое число, представимое в~\hologo{METAPOST}.)
+\end{frame}
+
+\begin{frame}{Оператор \literal{point of}}
+\begin{columns}
+\column{.4\textwidth}
+\input{figure-pointof}
+\column{.6\textwidth}
+На рисунке на пути $p={}$\literal{fullcircle} расставлены отметки в~точках
+\literal{point~}$t$\literal{~of~}$p$ с~шагом~$\frac14$.
+
+\bigskip
+Если приглядеться, видно, что отметки расположены не совсем равномерно.
+\end{columns}
+\end{frame}
+
+\begin{frame}{Пересечение путей}
+Оператор \literal{intersectionpoint} вычисляет точку пересечения двух путей
+$p_1$~и~$p_2$:
+\begin{center}
+\Large
+$p_1$ \literal{intersectionpoint} $p_2$
+\end{center}
+
+Если пути не пересекаются, возникает ошибка:
+\begin{screen}
+\only<1>{! The paths don't intersect.}%
+\only<2>{! Пути не пересекаются.}%
+\transdissolve<2>
+\end{screen}
+\end{frame}
+
+\begin{frame}{Пересечение путей}
+Если точек пересечения путей $p_1$~и~$p_2$ несколько, вычисляется
+по~возможности та из~них, которая лежит ближе к~началам каждого из~путей.
+
+Поскольку это пожелание по~своей сути противоречиво, алгоритм поиска точки
+пересечения путей определённым образом упорядочивает точки пересечения,
+и~выдаёт первую из~них (в~смысле этого упорядочения).
+
+Принцип упорядочения не самый очевидный, а~детали мы опустим.
+
+Вообще говоря, оператор \literal{intersectionpoint} не коммутативен.
+\end{frame}

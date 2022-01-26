@@ -1,0 +1,142 @@
+\sectionwithlogo{Управляющие конструкции}
+	%{\scalebox{.8}{\input{figure-for-3}}}
+	{\input{figure-for-3}}
+
+\begin{frame}{Управляющие конструкции в~\hologo{METAPOST}}
+В~\hologo{METAPOST}, как и~в~других императивных языках, имеются конструкции,
+влияющие на порядок выполнения команд: \emph{условная конструкция}
+и~\emph{цикл}.
+\end{frame}
+
+\begin{frame}{Цикл \literal{for}}
+\begin{columns}
+\column{.4\textwidth}
+\centering
+\only<1>{\input{figure-for-1}}%
+\only<2>{\input{figure-for-2}}%
+\only<3>{\input{figure-for-3}}%
+\column{.6\textwidth}
+\begin{programlisting}
+for i:=0 step 1 until 10:\par
+\only<1,3>{~~~~draw \only<1,3>{origin--3cm*dir(9i)};\par}%
+\only<2,3>{~~~~draw quartercircle\par~~~~~~~~scaled (6cm*i/10);\par}%
+endfor
+\end{programlisting}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Сокращения \literal{upto} и~\literal{downto}}
+В~циклах \literal{for} с~шагом~\literal1 можно воспользоваться удобным сокращением
+(макрокомандой) \literal{upto}:
+\begin{programlisting}
+for i:=0 \alert{\only<1>{step 1 until}\only<2>{upto}} 10:\par
+~~~~…\par
+endfor
+\end{programlisting}
+
+Для фразы \literal{step -1 until} имеется сокращение \literal{downto}.
+\end{frame}
+
+\begin{frame}{Цикл \literal{for} с~явным перечислением}
+Рассмотренные ранее циклы \literal{for} по очереди присваивали переменной цикла
+значения из некоторой арифметической прогрессии.
+
+Есть возможность явным образом перечислить значения, которые будут перебираться
+в~цикле:
+\begin{programlisting}%
+for i:=2, 3, 5, 7, 11, 13, 17, 19, 23:\par
+~~~~…\par
+endfor;
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Цикл \literal{for} с~явным перечислением}
+Перечисляемые значения не обязаны быть одного типа:
+\begin{programlisting}
+for i:=2, 2.71828459045, "METAPOST", up:\par
+~~~~show(i);\par
+endfor;
+\end{programlisting}
+
+Этот код приведёт к~выводу всех перечисленных разнотипных значений на терминал
+и~в~файл протокола:
+\begin{screen}%
+>> 2\par
+>> 2.71828\par
+>> "METAPOST"\par
+>> (0,1)
+\end{screen}
+\end{frame}
+
+\begin{frame}{Особенности цикла \literal{for}}
+Тело цикла \literal{for} не обязательно должно быть законченной командой. При
+обнаружении цикла \literal{for} компилятор \hologo{METAPOST} производит
+многократное повторение тела цикла с~подстановкой вместо имени переменной цикла
+(\literal{i}) её текущего, изменяющегося в~цикле, значения. Таким образом,
+команда
+\begin{programlisting}
+s:=for i:=1 upto 100: \alert{i+} endfor 0;
+\end{programlisting}
+воспринимается как
+\begin{programlisting}
+s:=\alert{1+2+3+4+5+…+95+96+97+98+99+100+}0;
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Особенности цикла \literal{for}}
+Впрочем, возможно и~«классическое» использование цикла для подсчёта суммы чисел
+от~$1$ до~$100$:
+\begin{programlisting}%
+s:=0;\par
+for i:=1 upto 100: \alert{s:=s+i;} endfor;
+\end{programlisting}
+Этот код интерпретируется как
+\begin{programlisting}%
+s:=0;\par
+\alert{s:=s+1;\par
+s:=s+2;\par
+…\par
+s:=s+99;\par
+s:=s+100;}
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Построение путей в~цикле}
+Упомянутая особенность цикла \literal{for} позволяет строить пути в~цикле.
+
+Рассмотрим эту возможность на примере графика функции $y=\cos x^2$. График
+будет представлен как ломаная.
+\begin{center}
+\input{figure-graph-cossq}
+\end{center}
+\end{frame}
+
+\begin{frame}{Построение путей в~цикле}
+\begin{programlisting}%
+drawarrow (-.25cm, 0)--(10cm, 0)\par
+~~~~withpen thinpen;\par
+drawarrow (0, -1.25cm)--(0, 1.25cm)\par
+~~~~withpen thinpen;\par
+\leavevmode\par
+draw\par
+~~~~((0, 1) for i:=0 step .025 until 9.5:\par
+~~~~~~~~--(i, cosd(i**2*rad))\par
+~~~~endfor)\par
+~~~~scaled cm withpen boldpen;\par
+\leavevmode\par
+label.bot(btex \$x\$ etex, (10cm, 0));\par
+label.lft(btex \$y\$ etex, (0, 1.25cm));
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Построение путей в~цикле}
+В~приведённом примере предполагается, что определены переменные типа
+\literal{pen}~— \literal{thinpen} и~\literal{boldpen}, хранящие перья, тонкое
+и~толстое соответственно.
+
+В~числовой переменной \literal{rad} содержится количество градусов в~одном
+радиане, т.~е. $\frac{180}\pi\approx57{,}3$.
+\end{frame}
+
+\begin{frame}{Условная конструкция [текста пока нет]}
+\end{frame}

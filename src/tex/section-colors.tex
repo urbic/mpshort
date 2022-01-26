@@ -1,0 +1,131 @@
+\sectionwithlogo{Цвета}{\scalebox{.85}{\input{figure-colorcircles}}}
+
+\begin{frame}{Цветовая схема~RGB}
+\begin{columns}
+\column{.5\textwidth}
+\input{figure-colorcircles}
+\column{.5\textwidth}
+В~\hologo{METAPOST} возможно цветное рисование. Для представления цветов
+предусмотрен тип \literal{color}.
+
+\bigskip
+
+В~\hologo{METAPOST} принята трёхкомпонентная цветовая схема~RGB. Каждый цвет
+представляется тройкой чисел~$(R,G,B)$, каждое из~которых заключено
+в~отрезке~$[0;1]$.
+\end{columns}
+
+Каждый цвет в~модели~RGB считается смесью трёх «основных» цветов. Числа~$R$,
+$G$, $B$~— количества соответственно красного, зелёного и~синего цветов в~такой
+смеси.
+\end{frame}
+
+\begin{frame}{Цветовой треугольник}
+\centerline{\input{figure-colortriangle}}
+\end{frame}
+
+\begin{frame}{Предопределённые цветовые переменные}
+\begin{columns}
+\column{.33333\textwidth}
+\rightline{\input{figure-square-red}}%
+\column{.66667\textwidth}
+\leftline{\LARGE\literal{red}${}\equiv{}$\literal{(1, 0, 0)}}%
+\end{columns}
+\bigskip
+\begin{columns}
+\column{.33333\textwidth}
+\rightline{\input{figure-square-green}}%
+\column{.66667\textwidth}
+\leftline{\LARGE\literal{green}${}\equiv{}$\literal{(0, 1, 0)}}%
+\end{columns}
+\bigskip
+\begin{columns}
+\column{.33333\textwidth}
+\rightline{\input{figure-square-blue}}%
+\column{.66667\textwidth}
+\leftline{\LARGE\literal{blue}${}\equiv{}$\literal{(0, 0, 1)}}%
+\end{columns}
+\end{frame}
+
+\begin{frame}{Цветовые выражения}
+\only<1>{%
+\begin{columns}
+\column{.5\textwidth}
+\rightline{\input{figure-square-darkred}}%
+\column{.5\textwidth}
+\leftline{\LARGE\literal{.7red}}%
+\end{columns}
+\bigskip
+\begin{columns}
+\column{.5\textwidth}
+\rightline{\input{figure-square-darkgreen}}%
+\column{.5\textwidth}
+\leftline{\LARGE\literal{.7green}}%
+\end{columns}
+\bigskip
+\begin{columns}
+\column{.5\textwidth}
+\rightline{\input{figure-square-darkblue}}%
+\column{.5\textwidth}
+\leftline{\LARGE\literal{.7blue}}%
+\end{columns}
+}%
+\only<2>{%
+\begin{columns}
+\column{.5\textwidth}
+\rightline{\input{figure-square-red+green}}%
+\column{.5\textwidth}
+\leftline{\LARGE\literal{red+green}}%
+\end{columns}
+\bigskip
+\begin{columns}
+\column{.5\textwidth}
+\rightline{\input{figure-square-red,green}}%
+\column{.5\textwidth}
+\leftline{\LARGE\literal{.5[red, green]}}%
+\end{columns}
+}%
+\end{frame}
+
+\begin{frame}{Определение цветовых переменных}
+\begin{programlisting}
+color yellow, cyan, magenta;\par
+\leavevmode\par
+yellow:=\only<1>{red+green}\only<2>{(1, 1, 0)};\par
+cyan:=\only<1>{green+blue}\only<2>{(0, 1, 1)};\par
+magenta:=\only<1>{blue+red}\only<2>{(1, 0, 1)};
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Декомпозиция цветов}
+Операторы \literal{redpart}, \literal{greenpart} и~\literal{bluepart} извлекают
+из цветового выражения соответственно красную, зелёную и~синюю составляющую:
+\begin{programlisting}
+color tomato;\par
+tomato=(1, .388235294117647, .27843137254902);
+\end{programlisting}
+
+\bigskip
+
+\begin{columns}
+\column{.25\textwidth}
+\input{figure-colorcircles-tomato}
+\column{.75\textwidth}
+\begin{center}
+\large
+\begin{grid}{rcl}
+\literal{redpart tomato}%
+&${}\equiv{}$
+&\literal{1}
+\\
+\literal{greenpart tomato}%
+&${}\equiv{}$
+&\literal{.38823}%
+\\
+\literal{bluepart tomato}%
+&${}\equiv{}$
+&\literal{.27843}%
+\end{grid}
+\end{center}
+\end{columns}
+\end{frame}

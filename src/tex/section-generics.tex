@@ -1,0 +1,239 @@
+\sectionwithlogo{Общие сведения}{\input{figure-clock}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Что такое \hologo{METAPOST}?}
+\begin{itemize}
+\item
+это алгоритмический язык
+\item
+это система программирования (компилятор~+~библиотеки)
+\end{itemize}
+
+\hologo{METAPOST} был создал Джоном Хобби (John~D.~Hobby).
+
+Во многом система \hologo{METAPOST} основана на системе \hologo{METAFONT},
+созданной известным американским математиком Дональдом Кнутом
+(Donald~E.~Knuth). \hologo{METAFONT} задуман как средство изготовления шрифтов
+для системы компьютерной вёрстки \TeX.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Возможности \hologo{METAPOST}}
+
+\begin{itemize}
+\item
+создание рисунков в~векторном графическом формате PostScript
+
+\item
+сложные вычисления при подготовке рисунков
+
+\item
+широкий набор встроенных и~библиотечных команд
+
+\item
+возможность программирования пользовательских команд
+
+\item
+вставка тескта, отформатированного в~системе~\TeX
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Сфера применения \hologo{METAPOST}}
+
+\begin{columns}
+
+\column{.55\textwidth}
+\begin{itemize}
+\item
+\alert<1>{подготовка чертежей и~технических рисунков}
+\item
+\alert<2>{диаграмм}
+\item
+\alert<3>{графиков функций}
+\item
+\alert<4>{иллюстраций по геометрии (с~формулами)}
+\item
+\alert<5>{логотипов}
+\end{itemize}
+
+\column{.45\textwidth}
+\only<1>{\input{figure-clock}}
+\only<2>{\input{figure-piechart}}
+\only<3>{\input{figure-graph}}
+\only<4>{\input{figure-fejer}}
+\only<5>{\input{figure-mmflogo}}
+
+\end{columns}
+
+\transdissolve<2->
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Особенности \hologo{METAPOST}}
+
+\hologo{METAPOST} \alert{не} является системой WYSIWYG (What You See Is What
+You Get~— «вы получаете то, что видите»). Это значит, что рисунок готовится как
+программа, которая компилируется, и~в~результате компиляции получается файл
+в~формате PostScript, содержащий изображение.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{PostScript}
+
+PostScript~— это не только графический формат, но и~алгоритмический язык. В~нём
+заложены богатые графические и~вычислительные возможности.
+
+Однако из-за особенностей этого языка на нём трудно программировать «вручную».
+Такое программирование требует от программиста совершенно иного мышления,
+нежели программирование на «традиционных» алгоритмических языках.
+
+Чаще всего программы на PostScript генерируются автоматически другими
+программами.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Предназначение PostScript}
+Главное предназначение PostScript~— управление растровыми устройствами, такими
+как принтеры, экран монитора или графический файл.
+
+Некоторые устройства вроде дорогих профессиональных принтеров имеют встроенный
+интерпретатор PostScript. Другие понимают более примитивный управляющий язык,
+поэтому для управления ими требуется программа"=переводчик (транслятор).
+Наиболее популярный транслятор языка PostScript~— программа GhostScript.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Пример на языке PostScript}
+\begin{columns}
+\column{.3\textwidth}
+\includegraphics{pstest}
+\column{.7\textwidth}
+\begin{programlisting}
+\%!PS-Adobe\par
+\leavevmode\par
+5 setlinewidth\par
+1 .388235294117647 .27843137254902\par
+~~~~setrgbcolor\par
+\leavevmode\par
+newpath\par
+8 dup moveto\par
+72 dup rlineto\par
+-72 0 rlineto\par
+72 -72 rlineto\par
+stroke\par
+\leavevmode\par
+showpage
+\end{programlisting}
+\end{columns}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Где взять \hologo{METAPOST}}
+\begin{itemize}
+\item
+\hologo{METAPOST} для Linux, Windows, Mac~OS~X входит в~пакет программ
+\TeX~Live:
+\url{https://tug.org/texlive/}
+\item
+\hologo{METAPOST} для Windows входит в~пакет программ MiK\TeX:
+\url{https://miktex.org/}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Что почитать про \hologo{METAPOST}\only<2->{
+	{\mdseries\itshape(продолжение)}}}
+\begin{thebibliography}{1}
+\small
+\only<1>{
+\bibitem{bib:Hobby}
+A User’s Manual for MetaPost
+\newblock
+Hobby, John~D.
+\newblock
+\url{https://www.tug.org/docs/metapost/mpman.pdf}
+
+\bibitem{bib:Hobby}
+\hologo{METAPOST}. Руководство пользователя
+\newblock
+Hobby, John D.
+\newblock
+\url{http://www.ctan.org/tex-archive/info/metapost/doc/russian/mpman-ru/mpman-ru.pdf}
+
+\bibitem{bib:Grogono}
+\hologo{METAPOST}: A~Reference Manual
+\newblock
+Grogono, Peter
+\newblock
+\url{http://users.encs.concordia.ca/~grogono/Writings/mpref.pdf}
+
+\bibitem{bib:Wiki}
+MetaPost — Википедия
+\newblock
+\url{http://ru.wikipedia.org/wiki/MetaPost}
+\newblock
+Статья в русской Википедии
+
+\bibitem{bib:Zoonekynd}
+Exemples d’utilisation de Métapost
+\newblock
+Zoonekynd, Vincent
+\newblock
+\url{http://zoonek.free.fr/LaTeX/Metapost/metapost.html}
+
+}
+
+\only<2>{%
+\bibitem{bib:Baldin}
+Создание иллюстраций в~\hologo{METAPOST}
+\newblock
+Балдин, Е. М.
+\newblock
+\url{http://www.inp.nsk.su/~baldin/mpost/}
+\newblock
+Статья для журнала «Linux Format»
+
+\bibitem{bib:Heck}
+Learning \hologo{METAPOST} by Doing
+\newblock
+Heck, André
+\newblock
+\url{http://remote.science.uva.nl/~heck/Courses/mptut.pdf}
+
+\bibitem{bib:Urs}
+MetaPost: A Very Brief Tutorial
+\newblock
+Urs, Oswald
+\newblock
+\url{http://www.ursoswald.ch/metapost/tutorial.pdf}
+
+\bibitem{bib:Hurlin}
+Practical introduction to~\hologo{METAPOST}
+\newblock
+Hurlin, Clément
+\newblock
+\url{http://www-sop.inria.fr/everest/Clement.Hurlin/misc/Practical-introduction-to-MetaPost.pdf}
+
+\bibitem{bib:Knuth:TheMETAFONTbookWilliams}
+Всё про \hologo{METAFONT}
+\newblock
+Кнут, Дональд Э.
+\newblock
+Москва~: Вильямс, 2003.~— ISBN 5-8459-0442-0 (рус.)
+}
+\end{thebibliography}
+\end{frame}

@@ -1,0 +1,699 @@
+\sectionwithlogo{Макрокоманды}
+	{\scalebox{.9}{\input{figure-tree-10}}}
+
+\begin{frame}{Метод декомпозиции в~программировании}
+В~соответствии с~методом декомпозиции программист стремится разбивать
+исходную, стоящую перед ним задачу на более простые подзадачи. Так~же он
+поступает с~подзадачами до тех пор, пока наиболее мелкие подзадачи не станут
+предельно простыми.
+
+Тем самым программист добивается следующего:
+\begin{itemize}
+\item
+появляется возможность коллективной работы над задачей, распределения работы
+между сотрудниками, каждый из которых занят решением своей подзадачи;
+
+\item
+будущая программа перестаёт быть аморфной и~приобретает структуру, в~результате
+работа над ней упрощается;
+
+\item
+если для подзадач имеются готовые (возможно, чужие) решения, их можно
+использовать, сократив интеллектуальные издержки.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Метод декомпозиции и~процедуры}
+Во~многих алгоритмических языках для поддержки метода декомпозиции
+предусмотрены процедуры (функции, подпрограммы).
+
+Программа представляется в~виде последовательности вызовов процедур: главная
+процедура вызывает процедуры, решающие подзадачи второго уровня; те, в~свою
+очередь, вызывают процедуры третьего уровня, и~т.~д.
+\end{frame}
+
+\begin{frame}{Принцип повторного использования кода}
+Принцип повторного использования кода в~программировании требует, чтобы
+программист вычленял в~исходной задаче группы однотипных подзадач.
+
+Готовые подпрограммы для решения подзадач могут вызываться многократно.
+
+За счёт этого код программы становится короче, яснее, его легче отлаживать
+(замеченная неточность в~подпрограмме исправляется один раз, а не во~многих
+местах программного кода).
+
+Общезначимые процедуры могут быть собраны в~библиотеки, которые могут быть
+подключены не только к~данной программе, но и~к~другим.
+\end{frame}
+
+\begin{frame}{Макрокоманды}
+В~\hologo{METAPOST} аналогами процедур являются \emph{макрокоманды}.
+
+Несмотря на некоторое отличие от процедур по способу реализации, макрокоманды
+играют ту~же роль, и~используются сходным образом.
+
+Макрокоманды, как и~процедуры, могут принимать параметры. Тогда они могут
+решать не одну единственную задачу, а~класс подзадач.
+\end{frame}
+
+\begin{frame}{Макрокоманды без параметров}
+Синтаксис:
+\begin{center}
+\LARGE
+\literal{def~}\replaceable{имя}\literal{=}\replaceable{тело макрокоманды}\literal{~enddef}
+\end{center}
+
+Например,
+\begin{programlisting}
+\Large
+def \alert{\only<1>{up}\only<2>{down}to}=\par
+~~~~\alert{step \only<2>{-}1 until}\par
+enddef;
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Макрокоманды с~параметрами}
+Синтаксис:
+\begin{center}
+\LARGE
+\literal{def~}\replaceable{имя}\literal{(expr~}\replaceable{список параметров}\literal{)=}\\
+\replaceable{тело макрокоманды} \literal{~enddef}
+\end{center}
+
+Например,
+\begin{programlisting}
+\Large
+def \alert{rotatedabout}(expr \alert{z, d})=\par
+~~~~\alert{shifted -z rotated d shifted z}\par
+enddef;
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Библиотека \nolinkurl{plain.mp}}
+Приведённые определения макрокоманд взяты из файла \nolinkurl{plain.mp}, который
+\hologo{METAPOST} прочитывает перед началом работы.
+
+Таким образом, многие полезные макрокоманды становятся доступными для нас.
+
+Кроме определений макрокоманд, файл содержит и другие команды, приводящие
+\hologo{METAPOST} в~рабочее состояние.
+
+Например, там объявляются и~получают значения полезные переменные, вроде
+\literal{cm}, \literal{origin}, \literal{right}, \literal{up}, \literal{left},
+\literal{down}, \literal{red}, \literal{green}, \literal{blue},
+\literal{mitered}, \literal{rounded},~…
+\end{frame}
+
+\begin{frame}{Библиотеки}
+Возможно создавать собственные библиотеки.
+
+Для этого нужные команды, тематически сгруппированные, следует поместить в~файл,
+скажем, \nolinkurl{planimetry.mp}, поместить этот файл в~такое место, где
+его найдёт \hologo{METAPOST}, например, в~текущую директорию.
+
+Затем в~наших программах (или в~других библиотеках) можно подключить эту
+библиотеку командой
+\begin{programlisting}
+input planimetry;
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Группировка и~локализация переменных}
+Группировка~— это способ объединения нескольких команд в~одну, составную. При
+этом изменения переменных, которые происходят внутри группы, можно
+локализовать.
+
+Это значит, что изменения переменных, произошедшие в~группе, будут забыты после
+её завершения (закрытия), если, конечно, программист позаботится о~локальности
+этих переменных.
+
+Для группировки необходимо поместить последовательность команд (после каждой~—
+точка с~запятой) между словами \literal{begingroup} и~\literal{endgroup}:
+\begin{center}
+\LARGE
+\literal{begingroup~}\replaceable{команды}\literal{~endgroup}
+\end{center}
+\end{frame}
+
+\begin{frame}{Группировка и~локализация переменных}
+Для того, чтобы сделать переменные локальными в~группе, нужно временно
+сохранить прежние значения командой \literal{save}:
+\begin{programlisting}
+begingroup\par
+~~~~\alert{save a, b, c};\par
+~~~~numeric a, b;\par
+~~~~pair c;\par
+~~~~…\par
+endgroup
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Группы как функции}
+У~группировки имеется и~другое предназначение. Если группа завершается
+выражением (то есть в~конце группы отсутствует точка с~запятой)
+\hologo{METAPOST} подставляет вместо группы значение выражения:
+\begin{center}
+\LARGE
+\literal{begingroup~}\replaceable{команды}~\replaceable{выражение}\literal{~endgroup}
+\end{center}
+
+Обычно \replaceable{команды} посвящены закулисным делам, которые нужны для
+вычисления \replaceable{выражения}.
+\end{frame}
+
+\begin{frame}{Пример: вычисление факториала}
+Допустим, в~программе потребовалось где"=то значение $6!$. Конечно, можно прямо
+написать~$720$, но мы на этом примере проиллюстрируем группировку, чтобы
+в~более трудных случаях действовать по аналогии.
+\begin{programlisting}
+numeric six\_factorial;\par
+six\_factorial=begingroup\par
+~~~~save f;\par
+~~~~numeric f;\par
+~~~~f:=1;\par
+~~~~for i:=2 upto 6: f:=f*i; endfor;\par
+~~~~\alert{f}~~~~\textcolor{cyan}{\% нет точки с~запятой!}\par
+endgroup;
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Пример: вычисление факториала}
+Благодаря нашим заботам приключения переменной \literal{f} внутри группы никак
+не повлияют на внешний мир.
+
+В~частности, если снаружи группы уже была объявлена такая переменная, то она
+сохранит своё прежнее значение и~тип (который мог отличаться от
+\literal{numeric}).
+
+Если~же переменная \literal{f} вне группы не определялась, такое~же положение
+дел сохранится и~после приведённого кода.
+\end{frame}
+
+\begin{frame}{Макрокоманда для факториала}
+Чтобы сделать код для вычисления факториала более универсальным (пригодным для
+вычисления не только~$6!$, но и~$n!$ для произвольного~$n$), оформим его как
+макрокоманду с~параметром:
+\begin{programlisting}
+def factorial(expr \alert{n})=\par
+~~~~begingroup\par
+~~~~~~~~save f;\par
+~~~~~~~~numeric f;\par
+~~~~~~~~f:=1;\par
+~~~~~~~~for i:=2 upto \alert{n}: f:=f*i; endfor;\par
+~~~~~~~~f\par
+~~~~endgroup~~~~\textcolor{cyan}{\% нет точки с запятой!}\par
+enddef;
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Макрокоманда для факториала}
+Обратите внимание на отсутствие точки с~запятой после \literal{endgroup}. Если
+бы она была там, команда
+\begin{programlisting}
+s:=factorial(5)+factorial(6);
+\end{programlisting}
+воспринималось~бы как
+\begin{programlisting}
+s:=120\alert{;}+720\alert{;};
+\end{programlisting}
+Это~бы привело, во"=первых, к~неправильному значению \literal{s}, и,
+во"=вторых, к~ошибке:
+\begin{screen}
+>> 720\par
+\only<1>{! Isolated expression.}%
+\only<2>{! Изолированное выражение.}%
+\transdissolve<2>
+\end{screen}
+\end{frame}
+
+\begin{frame}{Изолированное выражение}
+Ошибка «изолированное выражение» является довольно распространённой и обычно
+свидетельствует о~неполадках с~точками с~запятой.
+\begin{programlisting}
+s:=120;\alert{+720\alert;};
+\end{programlisting}
+В~нашем примере проблемной будет выделенная команда.
+
+Выражение \literal{+720} будет вычислено (значение~$720$), и~затем никак не
+использовано. Это является недопустимым в~\hologo{METAPOST}, хотя в~некоторых
+алгоритмических языках это не криминал.
+\end{frame}
+
+\begin{frame}{Макрокоманды \literal{vardef}}
+Поскольку часто определение макрокоманды сочетается с~группировкой,
+в~\hologo{METAPOST} имеется вариант макроопределений~— \literal{vardef}. В~теле
+таких определений группировка уже предполагается неявно:
+\begin{programlisting}
+\alert{\only<2-3>{var}def} factorial(expr n)=\par
+\only<1-2>{\uncover<1>{~~~~\alert{begingroup}\par}}%
+\only<1-2>{~~~~}~~~~save f;\par
+\only<1-2>{~~~~}~~~~numeric f;\par
+\only<1-2>{~~~~}~~~~f:=1;\par
+\only<1-2>{~~~~}~~~~for i:=2 upto n: f:=f*i; endfor;\par
+\only<1-2>{~~~~}~~~~f\par
+\only<1-2>{\uncover<1>{~~~~\alert{endgroup}\par}}%
+enddef;
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Пример: пересечение прямых}
+Оформим код для нахождения пересечения прямых как макрокоманду. На вход
+макрокоманда будет получать четыре точки (пары), на выходе будет возвращать
+точку пересечения прямых, проходящих через первые две (\literal{p}
+и~\literal{q}) и~последние две (\literal{r} и~\literal{s}) точки.
+\begin{programlisting}
+vardef intersection(expr p, q, r, s)=\par
+~~~~save z;\par
+~~~~pair z;\par
+~~~~z=whatever[p, q]=whatever[r, s];\par
+~~~~z\par
+enddef;
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Определение макрокоманды \literal{whatever}}
+В~библиотеке \nolinkurl{plain.mp} команда \literal{whatever} определяется так:
+\begin{programlisting}
+vardef whatever=save ?; ? enddef;
+\end{programlisting}
+В~теле этого макроопределения локализуется переменная \literal{?}
+(в~\hologo{METAPOST} возможны и~такие имена), и, не получая никакого значения,
+возвращается. Имя этой переменной тут~же забывается, а~неопределённое значение
+можно использовать.
+
+Таким образом, команда \literal{whatever}~— это своего рода генератор анонимных
+числовых переменных.
+\end{frame}
+
+\begin{frame}{Пример: описанная окружность}
+Определяем центр описанной окружности как точку пересечения серединных
+перпендикуляров (медиатрис) сторон треугольника:
+\begin{programlisting}
+vardef circumcenter(expr p, q, r)=\par
+~~~~intersection(\par
+~~~~~~~~.5[p, q],\par
+~~~~~~~~.5[p, q]+((q-p) rotated 90),\par
+~~~~~~~~.5[q, r],\par
+~~~~~~~~.5[q, r]+((r-q) rotated 90)\par
+~~~~)\par
+enddef;
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Пример: описанная окружность}
+Радиус находим как расстояние от центра до одной из вершин (неважно какой):
+\begin{programlisting}
+vardef circumradius(expr p, q, r)=\par
+~~~~abs(circumcenter(p, q, r)-p)\par
+enddef;
+\end{programlisting}
+
+Сама окружность (путь):
+\begin{programlisting}
+vardef circumcircle(expr p, q, r)=\par
+~~~~fullcircle\par
+~~~~~~~~scaled (2circumradius(p, q, r))\par
+~~~~~~~~shifted circumcenter(p, q, r)\par
+enddef;
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Пример: вписанная окружность}
+Центр вписанной в~треугольник окружности найдём как точку пересечения двух
+биссектрис. Воспользуемся тем, что сумма двух единичных векторов служит
+биссектрисой угла между этими векторами, так~что биссектриса угла~\literal{a}
+треугольника проходит через точку \literal{a+unitvector(b-a)+unitvector(c-a)}
+(\literal{b} и~\literal{c}~— остальные вершины).
+\begin{programlisting}
+vardef incenter(expr a, b, c)=\par
+~~~~intersection(\par
+~~~~~~~~a, a+unitvector(b-a)+unitvector(c-a),\par
+~~~~~~~~b, b+unitvector(c-b)+unitvector(a-b)\par
+~~~~)\par
+enddef;
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Пример: вписанная окружность}
+\begin{programlisting}
+vardef inradius(expr a, b, c)=\par
+~~~~save i;\par
+~~~~pair i;\par
+~~~~i=incenter(a, b, c);\par
+~~~~abs(i-intersection(a, b, i, i+((b-a) zscaled up)))\par
+enddef;
+\end{programlisting}
+
+\begin{programlisting}
+vardef incircle(expr a, b, c)=\par
+~~~~fullcircle scaled 2inradius(a, b, c)\par
+~~~~~~~~shifted incenter(a, b, c)\par
+enddef;
+\end{programlisting}
+\end{frame}
+
+
+\begin{frame}{Использование макрокоманды \literal{circumcircle}}
+\begin{columns}
+\column{.4\textwidth}
+\input{figure-circumcircle}
+\column{.6\textwidth}
+\begin{programlisting}
+z1=origin;\par
+z2=(2cm, 0);\par
+z3=(.5cm, 3cm);\par
+draw z1--z2--z3--cycle;\par
+draw circumcircle(z1, z2, z3)\par
+~~~~withcolor red;
+\end{programlisting}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Рекурсия}
+В~\hologo{METAPOST} разрешена \emph{рекурсия}, то~есть ситуация, когда
+макрокоманда вызывает сама себя, прямо или косвенно.
+
+Проиллюстрируем этот тезис на классическом примере~— вычислении факториала.
+\end{frame}
+
+\begin{frame}{Рекурсивное вычисление факториала}
+Воспользуемся известным соотношением $n!=n(n-1)!$. Вместе с~равенством $0!=1$
+эта формула даёт способ рекурсивного вычисления факториала:
+
+\begin{programlisting}
+def factorial(expr n)=\par
+~~~~if n=0: 1 else: n*factorial(n-1) fi\par
+enddef;
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Дерево}
+\centerline{\input{figure-tree-10}}
+\end{frame}
+
+\begin{frame}{Дерево как рекурсивная структура}
+Наблюдения за деревьями, этими прекрасными творениями природы, показывают, что
+они имеют рекурсивное устройство.
+
+Дерево состоит из~ствола и~растущих из него ветвей, каждая из~которых является
+уменьшенной копией дерева.
+
+Такое определение дерева предусматривает бесконечное количество ветвей. Оно
+нуждается в~уточнении.
+
+Дерево $n$-го порядка (при $n>0$) состоит из~ствола и~растущих из~него ветвей,
+каждая из~которых представляет собой дерево $(n-1)$-го порядка. Дерево $0$-го
+порядка~— это голый ствол.
+\end{frame}
+
+\begin{frame}{Рост дерева:
+\only<1>{0}%
+\only<2>{1}%
+\only<3>{2}%
+\only<4>{3}%
+\only<5>{4}%
+\only<6>{5}%
+\only<7>{6}%
+\only<8>{7}%
+\only<9>{8}%
+\only<10>{9}%
+\only<11>{10}%
+-й порядок}
+\centerline{%
+\only<1>{\input{figure-tree-0}}%
+\only<2>{\input{figure-tree-1}}%
+\only<3>{\input{figure-tree-2}}%
+\only<4>{\input{figure-tree-3}}%
+\only<5>{\input{figure-tree-4}}%
+\only<6>{\input{figure-tree-5}}%
+\only<7>{\input{figure-tree-6}}%
+\only<8>{\input{figure-tree-7}}%
+\only<9>{\input{figure-tree-8}}%
+\only<10>{\input{figure-tree-9}}%
+\only<11>{\input{figure-tree-10}}%
+}
+\end{frame}
+
+\begin{frame}{Построение дерева}
+\begin{columns}
+\column{.4\textwidth}
+\input{figure-tree-labels-1}
+\column{.6\textwidth}
+\only<1>{%
+Правая ветка дерева отклоняется от вертикали в~пределах закрашенного сектора.
+Угол отклонения случайный и~равномерно распределённый в~пределах от~$0$
+до~$\theta$ (в~нашем примере~$45^\circ$.
+
+\bigskip
+
+Угол~$\theta$ будет в~программе храниться в~переменной \literal{theta}.}%
+\only<2>{%
+Длина веток получается умножением параметра \literal{shortening} на длину
+ствола дерева.
+
+\bigskip
+
+Толщина веток получается умножением параметра \literal{thinning} на толщину
+ствола дерева \literal{thickness}.
+
+\bigskip
+
+Ветки светлее ствола, и~параметр \literal{lightening} отвечает за осветление.}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}{Дерево: код программы}
+Определяем параметры…
+\begin{programlisting}
+theta:=45;\par
+thinning:=.7;\par
+shortening:=.8;\par
+lightening:=.1;
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Дерево: код программы}
+Определяем макрокоманду \literal{tree} с~параметрами \literal{a} и~\literal{b}
+(основание и~верхушка ствола), \literal{n} (порядок дерева),
+\literal{thickness} (толщина ствола), \literal{clr} (цвет ствола).
+\begin{programlisting}
+vardef tree(expr a, b, n, thickness, clr)=\par
+~~~~…\par
+enddef;
+\end{programlisting}
+(код макрокоманды на следующем слайде).
+
+Вызываем макрокоманду \literal{tree}:
+\begin{programlisting}
+tree(origin, (0, cm), 10, 2mm, .25green);
+\end{programlisting}
+
+Рисунок готов.
+\end{frame}
+
+\begin{frame}{Тело макрокоманды \literal{tree}}
+Объявляем параметры~— координаты верхушек веток…
+\begin{programlisting}
+save c, d;\par
+pair c, d;
+\end{programlisting}
+
+Определяем координаты верхушки правой ветки…
+\begin{programlisting}
+c:=shortening[b,\par
+~~~~a rotatedaround(b, 180-theta+uniformdeviate(theta))];
+\end{programlisting}
+и~левой…
+\begin{programlisting}
+d:=shortening[b,\par
+~~~~a rotatedaround(b, theta-180+uniformdeviate(theta))];
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Тело макрокоманды \literal{tree}}
+Рисуем ствол…
+\begin{programlisting}
+draw a--b\par
+~~~~withpen pencircle scaled thickness\par
+~~~~withcolor clr;
+\end{programlisting}
+
+Для деревьев порядка ${}>0$ рисуем ветки…
+\begin{programlisting}
+if n>0:\par
+~~~~tree(b, c, n-1, thinning*thickness,\par
+~~~~~~~~lightening[clr, white]);\par
+~~~~tree(b, d, n-1, thinning*thickness,\par
+~~~~~~~~lightening[clr, white]);\par
+fi
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Макрокоманды \literal{vardef … @\#}}
+В~библиотеке \nolinkurl{plain.mp} даётся следующее определение:
+\begin{programlisting}
+vardef z@\#=(x@\#, y@\#) enddef;
+\end{programlisting}
+Такое определение создаёт видимость того, что переменные, чьи имена начинаются
+с~токена \literal{z}, объявлены как переменные типа \literal{pair}.
+
+Таким образом, можно пользоваться «переменными» с~именами \literal{z1},
+\literal{z13a}, \literal{z.p.q[25]} как будто они объявлены как пары.
+
+На самом деле при употреблении таких имён происходит подстановка тела
+макрокоманды \literal{z@\#}: вместо \literal{z.p.q[25]} подставляется
+\literal{(x.p.q[25], y.p.q[25])}. Переменные \literal{x.p.q[25]}
+и~\literal{y.p.q[25]}, если они не объявлялись, воспринимаются в~программе как
+числовые (\literal{numeric}), что и~требуется.
+\end{frame}
+
+\begin{frame}{Макрокоманды \literal{vardef … @\#}}
+Кроме всего прочего, в~определении макрокоманды \literal{beginfig} имеется
+фрагмент
+\begin{programlisting}
+begingroup\par
+save x, y;\par
+\end{programlisting}
+а~в~определении команды \literal{endfig}~—
+\begin{programlisting}
+endgroup
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Макрокоманды \literal{vardef … @\#}}
+Так~что в~начале каждого рисунка переменные, чьи имена начинаются с~токенов
+\literal{x} или \literal{y}, становятся независимыми от таких~же имён внутри
+кода других рисунков.
+
+Код многих рисунков, как мы видели в~примерах, начинается сразу с~определений
+пар \literal{z.}\replaceable{суффикс} (а~их объявление пропускается):
+\begin{programlisting}
+z1=origin;\par
+z2=(3cm, 0);\par
+z3=(0, 4cm);\par
+\leavevmode\par
+draw z1--z2--z3--cycle;\par
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Применение определений \literal{vardef … @\#}}
+Эта особенность определений \literal{vardef} позволяет передавать
+в~макрокоманды не только выражения, но и~имена.
+
+Например, можно определить макрокоманду, которая построит и~возвратит график
+функции (путь) на заданном отрезке. Она в~качестве параметров примет числа~—
+концы заданного отрезка (\literal{a} и~\literal{b}), шаг \literal{delta},
+а~также имя функции (\literal{@\#}), чей график следует построить.
+
+Определение будет таким:
+\begin{programlisting}
+vardef graph@\#(expr a, b, delta)=\par
+~~~~for i:=a step delta until b:\par
+~~~~~~~~(i, @\#(i))--\par
+~~~~endfor (b, @\#(b))\par
+enddef;
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Применение макрокоманды \literal{graph}}
+В~качестве примера применения макрокоманды \literal{graph} построим графики
+функций $f(x)=x^x$ и~$g(x)=\sqrt{1-x^2}$ на отрезке $[0;1]$ с~шагом $0{,}01$
+(полученная ломаная будет иметь сто звеньев). Код для рисования координатных
+осей не приводится.
+
+\begin{columns}
+\column{.4\textwidth}
+\centerline{\input{figure-graph-pow-x-x}}
+\column{.6\textwidth}
+\begin{programlisting}
+vardef f(expr x)=x**x enddef;\par
+vardef g(expr x)=1+-+x enddef;\par
+\leavevmode\par
+draw graph.f(0, 1, .01)\par
+~~~~scaled 3cm\par
+~~~~withcolor red;\par
+draw graph.g(0, 1, .01)\par
+~~~~scaled 3cm\par
+~~~~withcolor .5green;
+\end{programlisting}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Нелинейные уравнения}
+Некоторые построения требуют решения нелинейных уравнений.
+
+В~\hologo{METAPOST} отсутствуют встроенные средства для этого.
+\end{frame}
+
+\begin{frame}{Процедура \literal{solve}}
+Процедура \literal{solve} из библиотеки \nolinkurl{plain.mp} позволяет численно
+решать уравнения с~одной неизвестной методом бисекций (бинарным поиском).
+
+\begin{center}
+\LARGE
+\literal{solve~}$f$\literal{(}$t_+$\literal{,}$t_-$\literal{)}
+\end{center}
+
+Здесь $f$~— имя процедуры с~одним числовым параметром, возвращающей значение
+типа \literal{boolean}. Её мы должны запрограммировать сами с~помощью
+\literal{vardef}.
+
+Процедура \literal{solve} возвращает число $t\in[t_+,t_-]$, близко к~которому
+значение $f(t)$ меняются с~истинного на ложное. Предполагается, что $f(t_+)$
+истинно, а~$f(x_-)$~— ложно.
+\end{frame}
+
+\begin{frame}{Пример с~нелинейным уравнением}
+\centerline{\input{figure-equalincircles}}
+
+Требуется провести чевиану в~треугольнике так, чтобы она разделила его на два
+треугольника с~равными радиусами вписанных кругов.
+
+Задача сводится к~решению системы рациональных уравнений. Общее решение можно
+найти вручную (очень сложно) или с~помощью систем компьютерной алгебры. Для
+наших целей подойдёт численное решение.
+\end{frame}
+
+\begin{frame}{Пример с~нелинейным уравнением {\mdseries\itshape(продолжение)}}
+Определим вершины треугольника:
+\begin{programlisting}
+z1=origin;\par
+z2=(5cm, 0);\par
+z3=(1.5cm, 3cm);
+\end{programlisting}
+
+Искомое основание чевианы будем искать как точку $t[z_1,z_2]$, где~$t$ найдём
+с~помощью \literal{solve}.
+\end{frame}
+
+\begin{frame}{Пример с~нелинейным уравнением {\mdseries\itshape(продолжение)}}
+Определим~процедуру~\literal{f}, используя ранее определённую процедуру
+\literal{inradius}:
+\begin{programlisting}
+vardef f(expr t)=\par
+~~~~inradius(z1, t[a, b], z3)<inradius(t[z1, z2], z2, z3)\par
+enddef;
+\end{programlisting}
+
+При $t_+=0$ она возвращает истину, при $t_-=1$~— ложь. Где-то между этим
+значениями истинность $f(t)$ меняется. Теперь находим основание чевианы:
+\begin{programlisting}
+z4=(solve f(0, 1))[z1, z2];
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Пример с~нелинейным уравнением {\mdseries\itshape(продолжение)}}
+\begin{columns}
+\column{.45\textwidth}
+Рисуем:
+\begin{programlisting}
+draw z1--z2--z3--cycle;\par
+draw z4--z3;\par
+draw incircle(z1, z4, z3);\par
+draw incircle(z4, z2, z3);\par
+\end{programlisting}
+\column{.45\textwidth}
+\centerline{\input{figure-equalincircles}}
+\end{columns}
+\end{frame}

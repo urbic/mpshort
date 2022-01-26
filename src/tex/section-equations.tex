@@ -1,0 +1,211 @@
+\sectionwithlogo{Уравнения}
+	{\input{figure-orthoproj-1}}
+
+\begin{frame}{Уравнения в~\hologo{METAPOST}}
+В~\hologo{METAPOST} имеется уникальный встроенный механизм решения линейных
+алгебраических уравнений.
+
+Наиболее распространённое применение этого механизма~— вычисление точки
+пересечения двух прямых, каждая из которых задана парой точек.
+\end{frame}
+
+\begin{frame}{Пересечение двух прямых}
+\begin{columns}
+\column{.3\textwidth}
+\input{figure-lineintersection}
+\column{.7\textwidth}
+Утверждение о~том, что точка~$z$ лежит на прямой~$z_1z_2$, алгебраически
+выражается так:
+	\[
+	z=\only<1>{\lambda[z_1,z_2]}\only<2>{(1-\lambda)z_1+\lambda z_2},
+	\tag{1}
+	\]
+где~$\lambda$~— некоторое число.
+Аналогично, если точка~$z$ к~тому~же лежит на другой прямой~$z_3z_4$, получим
+	\[
+	z=\only<1>{\mu[z_3,z_4]}\only<2>{(1-\mu)z_3+\mu z_4}.
+	\tag{2}
+	\]
+Достаточно найти~$\lambda$, приравнивая правые части уравнений~\thetag1,
+\thetag2, и~подставить в~\thetag1, чтобы найти выражение для~$z$.
+\end{columns}
+\end{frame}
+
+\begin{frame}{Пересечение двух прямых}
+Векторное уравнение
+	\[
+	(1-\lambda)z_1+\lambda z_2=(1-\mu)z_3+\mu z_4
+	\]
+можно рассматривать как систему из двух скалярных уравнений с~двумя
+неизвестными~$\lambda$, $\mu$:
+	\[
+	\left\{
+	\begin{aligned}
+		&(1-\lambda)x_1+\lambda x_2=(1-\mu)x_3+\mu x_4,\\
+		&(1-\lambda)y_1+\lambda y_2=(1-\mu)y_3+\mu y_4.
+	\end{aligned}
+	\right.
+	\]
+Выражение для~$\lambda$ получается довольно громоздким:
+	\[
+	\lambda=\frac{(x_3-x_1)(y_4-y_3)-(x_4-x_3)(y_3-y_1)}
+		{(x_2-x_1)(y_4-y_3)-(x_4-x_3)(y_2-y_1)},
+	\]
+а~для~$z$~— и~того хуже.
+\end{frame}
+
+\begin{frame}{Пересечение двух прямых}
+Встроенный в~\hologo{METAPOST} механизм решения линейных алгебраических
+уравнений избавляет нас от всех этих вычислений:
+\begin{programlisting}
+numeric lambda, mu;\par
+pair z;\par
+z=lambda[z1, z2]=mu[z3, z4];
+\end{programlisting}
+Теперь пара~\literal z получит нужное значение.
+\end{frame}
+
+\begin{frame}{Команда \literal{whatever}}
+Обратите внимание на то, что из трёх найденных значений~$z$, $\lambda$, $\mu$
+нас в~конечном итоге интересовало только~$z$.
+
+Переменные $\lambda$ и~$\mu$ являются вспомогательными, они отвечают за
+положение точки~$z$ на прямых~$z_1z_2$ и~$z_3z_4$.
+
+Чтобы не изобретать имена для вспомогательных числовых переменных, чтобы не
+объявлять эти переменные, удобно воспользоваться командой \literal{whatever}:
+\begin{programlisting}
+pair z;\par
+z=whatever[z1, z2]=whatever[z3, z4];
+\end{programlisting}
+\end{frame}
+
+\begin{frame}{Команда \literal{whatever}}
+Команда \literal{whatever} создаёт новую безымянную числовую переменную
+и~тут~же её подставляет в~текст программы.
+
+Название этой команды очень хорошо отражает её предназначение: выражение
+\literal{z=whatever[z1, z2]} значит «точка~$z$ лежит где"=то
+на~прямой~$z_1z_2$».
+
+Обратите внимание: каждая команда~\literal{whatever} в~программе создаёт
+числовую переменную, полностью независимую от других, созданных той~же
+командой.
+\end{frame}
+
+\begin{frame}{Пример: проекция точки на~прямую}
+\begin{columns}
+\column{.35\textwidth}
+\centering
+\only<1>{\input{figure-orthoproj}}%
+\only<2>{\input{figure-orthoproj-1}}%
+\column{.65\textwidth}
+Применим механизм решения уравнений для~вычисления ортогональной проекции точки
+на~прямую.
+
+\pause
+\bigskip
+Во"=первых, точка~$z$ лежит на~прямой~$z_1z_2$:
+\begin{programlisting}
+z=whatever[z1, z2];
+\end{programlisting}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Пример: проекция точки на~прямую}
+\begin{columns}
+\column{.35\textwidth}
+\centering
+\input{figure-orthoproj-2}
+\column{.65\textwidth}
+Во"=вторых, $z$ находится на~перпендикуляре к~прямой~$z_1z_2$, проходящем через
+точку~$z_3$.
+
+\bigskip
+
+Вторую недостающую точку этого перпендикуляра можно найти, сдвинув точку~$z_3$
+на вектор~$z_1z_2$, повёрнутый на~$90^\circ$:
+\begin{programlisting}
+z=whatever[z3,\par
+~~~~~~~~z3+((z2-z1) rotated 90)];
+\end{programlisting}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Способы придания значений переменным}
+В~\hologo{METAPOST} переменная может получить значение двумя способами:
+\begin{columns}
+\column{.5\textwidth}
+\begin{itemize}
+\item
+с~помощью \alert<2>{присваивания}
+\item
+с~помощью \alert<3>{уравнений}
+\end{itemize}
+\column{.5\textwidth}
+\begin{center}
+\LARGE\literal{%
+\only<2>{a\alert{:=}5}%
+\only<3>{8\alert=a+3}%
+}%
+\end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Синтаксис присваивания}
+\begin{center}
+\LARGE
+\replaceable{переменная}\literal{:=}\replaceable{выражение}\literal{;}
+\end{center}
+\end{frame}
+
+\begin{frame}{Синтаксис уравнения}
+\only<1>{%
+\begin{center}
+\Large
+\replaceable{линейное выражение}\literal{=}\replaceable{линейное выражение}\literal{;}
+\end{center}}%
+\only<2>{Правая и~левая части уравнения должны иметь одинаковый тип.
+
+\replaceable{линейное выражение} должно быть линейным по отношению ко~всем
+неизвестным числам.
+
+Допускаются комбинации из нескольких уравнений:
+\begin{programlisting}
+z4-z1=z3-z2=(3, y5);
+\end{programlisting}
+}%
+\end{frame}
+
+\begin{frame}{Несовместные уравнения}
+\only<1->{%
+По мере появления в~программе уравнений значения участвующих в~них переменных
+уточняются.
+\begin{programlisting}
+x+y=1;\par
+3-2y=2x;
+\end{programlisting}
+
+}
+\only<2-3>{%
+При появлении уравнения, противоречащего предыдущим, возникает ошибка:
+\begin{screen}
+\only<2>{! Inconsistent equation (off by -1).}%
+\only<3>{! Несовместное уравнение (отклонение на -1).}%
+\end{screen}
+}%
+\transdissolve<3>
+\end{frame}
+
+\begin{frame}{Избыточные уравнения}
+Уравнения, которые возможно преобразовать к~тривиальному уравнению
+\literal{0=0}, вызывают ошибку:
+\begin{programlisting}
+3=5-2;
+\end{programlisting}
+\begin{screen}
+\only<1>{! Redundant equation.}%
+\only<2>{! Избыточное уравнение.}%
+\end{screen}
+\transdissolve<2>
+\end{frame}
