@@ -20,4 +20,3 @@ RUN zypper -n --gpg-auto-import-keys in -y --no-recommends \
 ENV HOME /mpshort
 COPY . ${HOME}
 WORKDIR ${HOME}
-#RUN ant
