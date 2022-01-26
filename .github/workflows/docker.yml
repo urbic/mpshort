@@ -19,7 +19,7 @@ jobs:
       - name: Deploy via rsync
         uses: burnett01/rsync-deployments@5.2
         with:
-          switches: -avz -vvv --progress -e "ssh -p ${{secrets.DEPLOY_PORT}}"
+          switches: -avz -vvv --progress -e "ssh -oHostKeyAlgorithms=+ssh-ed25519 -p ${{secrets.DEPLOY_PORT}} "
           path: HELLO
           remote_path: ${{secrets.DEPLOY_PATH}}
           remote_host: ${{secrets.DEPLOY_HOST}}
