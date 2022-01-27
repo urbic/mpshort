@@ -22,7 +22,7 @@ jobs:
         uses: burnett01/rsync-deployments@5.2
         with:
           rsh: -oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=+ssh-rsa
-          switches: -avz -vvv --progress
+          switches: -avz --progress
           path: ${PRJ_NAME}.pdf
           remote_path: ${{secrets.DEPLOY_PATH}}
           remote_host: ${{secrets.DEPLOY_HOST}}
