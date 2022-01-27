@@ -12,6 +12,7 @@
 %\RequirePackage{mflogo}
 \RequirePackage{array}
 \RequirePackage{hologo}
+\RequirePackage{datetime2}
 \RequirePackage{luamplib}
 
 \setdefaultlanguage{russian}

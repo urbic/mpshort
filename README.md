@@ -1,1 +1,1 @@
-# METAPOST. Краткий курс
+![METAPOST. Краткий курс](http://mech.math.msu.su/~shvetz/54/inf/metapost/mpshort-cover.svg)
