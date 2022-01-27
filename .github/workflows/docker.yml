@@ -19,7 +19,7 @@ jobs:
       - name: Deploy via rsync
         uses: burnett01/rsync-deployments@5.2
         with:
-          rsh: -p ${{secrets.DEPLOY_PORT}}
+          rsh: -oHostKeyAlgorithms=ssh-rsa
           switches: -avz -vvv --progress
           path: HELLO
           remote_path: ${{secrets.DEPLOY_PATH}}
