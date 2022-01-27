@@ -12,7 +12,7 @@ RUN zypper -n --gpg-auto-import-keys in -y --no-recommends \
 	texlive-latexmk \
 	texlive-luamplib \
 	texlive-metapost \
-	texlive-mflogo \
+	texlive-mflogo-font{,-fonts} \
 	texlive-microtype \
 	texlive-piechartmp \
 	texlive-polyglossia \
