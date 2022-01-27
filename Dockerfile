@@ -7,7 +7,9 @@ RUN zypper -n --gpg-auto-import-keys in -y --no-recommends \
 	git \
 	google-alegreya{,-sans}-fonts \
 	iosevka-fonts \
+	poppler-tools \
 	texlive-beamer \
+	texlive-datetime2 \
 	texlive-hologo \
 	texlive-hyphen-russian \
 	texlive-knuth-{lib,local} \
