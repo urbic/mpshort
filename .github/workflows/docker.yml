@@ -13,15 +13,17 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v2
-      - name: Build
+      - name: Build with Docker
         run: |
-          echo HELLO >HELLO
+          docker build . -f Dockerfile -t ${PRJ_NAME} --label "runnumber=${GITHUB_RUN_ID}"
+          docker run --name=build-${PRJ_NAME} ${PRJ_NAME} ant
+          docker cp build-${PRJ_NAME}:/${PRJ_NAME}/target/${PRJ_NAME}.pdf .
       - name: Deploy via rsync
         uses: burnett01/rsync-deployments@5.2
         with:
           rsh: -oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=+ssh-rsa
           switches: -avz -vvv --progress
-          path: HELLO
+          path: ${PRJ_NAME}.pdf
           remote_path: ${{secrets.DEPLOY_PATH}}
           remote_host: ${{secrets.DEPLOY_HOST}}
           remote_port: ${{secrets.DEPLOY_PORT}}
