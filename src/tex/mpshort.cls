@@ -10,11 +10,12 @@
 \RequirePackage{graphicx}
 \RequirePackage{unicode-math}[math-style=ISO,partial=italic]
 %\RequirePackage{mflogo}
+\RequirePackage{array}
 \RequirePackage{hologo}
 \RequirePackage{luamplib}
 
 \setdefaultlanguage{russian}
-\setotherlanguage{english}
+\setotherlanguages{english,french}
 
 \setmainfont{Alegreya}[WordSpace=1.8]
 \setsansfont{Alegreya Sans}[WordSpace=1.8]
