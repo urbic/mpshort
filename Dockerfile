@@ -8,11 +8,13 @@ RUN zypper -n --gpg-auto-import-keys in -y --no-recommends \
 	google-alegreya{,-sans}-fonts \
 	iosevka-fonts \
 	texlive-beamer \
+	texlive-hologo \
 	texlive-hyphen-russian \
+	texlive-knuth-{lib,local} \
 	texlive-latexmk \
 	texlive-luamplib \
 	texlive-metapost \
-	texlive-mflogo-font{,-fonts} \
+	texlive-mflogo{,-font} \
 	texlive-microtype \
 	texlive-piechartmp \
 	texlive-polyglossia \
