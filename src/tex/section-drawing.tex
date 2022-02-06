@@ -1,7 +1,7 @@
 \sectionwithlogo{Рисование}{%
-	\scalebox{.8}{\input{figure-path-linejoin-mitered}}\\[1ex]
-	\scalebox{.8}{\input{figure-path-linejoin-rounded}}\\[1ex]
-	\scalebox{.8}{\input{figure-path-linejoin-beveled}}%
+	\scalebox{.8}{\includeMPgraphics{figure-path-linejoin-mitered}}\\[1ex]
+	\scalebox{.8}{\includeMPgraphics{figure-path-linejoin-rounded}}\\[1ex]
+	\scalebox{.8}{\includeMPgraphics{figure-path-linejoin-beveled}}%
 	}
 
 \begin{frame}{Рисование}
@@ -13,7 +13,7 @@
 \begin{frame}{Примеры рисования}
 \begin{columns}
 \column{.25\textwidth}
-\centerline{\input{figure-draw-unitsquare}}%
+\centerline{\includeMPgraphics{figure-draw-unitsquare}}%
 \column{.75\textwidth}
 \begin{programlisting}
 \alert{draw} unitsquare scaled 2cm;
@@ -22,7 +22,7 @@
 \bigskip
 \begin{columns}
 \column{.25\textwidth}
-\centerline{\input{figure-fill-unitsquare}}%
+\centerline{\includeMPgraphics{figure-fill-unitsquare}}%
 \column{.75\textwidth}
 \begin{programlisting}
 \alert{fill} unitsquare scaled 2cm;
@@ -33,7 +33,7 @@
 \begin{frame}{Примеры рисования}
 \begin{columns}
 \column{.25\textwidth}
-\centerline{\input{figure-draw-quartercircle}}%
+\centerline{\includeMPgraphics{figure-draw-quartercircle}}%
 \column{.75\textwidth}
 \begin{programlisting}
 \alert{draw} origin--quartercircle\par
@@ -71,7 +71,7 @@
 \begin{frame}{Цветное рисование}
 \begin{columns}
 \column{.25\textwidth}
-\centerline{\input{figure-draw-unitsquare-green}}%
+\centerline{\includeMPgraphics{figure-draw-unitsquare-green}}%
 \column{.75\textwidth}
 \begin{programlisting}
 draw unitsquare scaled 2cm\par
@@ -81,7 +81,7 @@ draw unitsquare scaled 2cm\par
 \bigskip
 \begin{columns}
 \column{.25\textwidth}
-\centerline{\input{figure-fill-unitsquare-tomato}}%
+\centerline{\includeMPgraphics{figure-fill-unitsquare-tomato}}%
 \column{.75\textwidth}
 \begin{programlisting}
 fill unitsquare scaled 2cm\par
@@ -94,21 +94,21 @@ fill unitsquare scaled 2cm\par
 \begin{frame}{Рисование различными перьями}
 \begin{columns}
 \column{.25\textwidth}
-\centerline{\input{figure-pencircle}}%
+\centerline{\includeMPgraphics{figure-pencircle}}%
 \column{.75\textwidth}
 {\LARGE\literal{pencircle}}%
 \end{columns}
 \bigskip
 \begin{columns}
 \column{.25\textwidth}
-\centerline{\input{figure-penrazor}}%
+\centerline{\includeMPgraphics{figure-penrazor}}%
 \column{.75\textwidth}
 {\LARGE\literal{penrazor}}%
 \end{columns}
 \bigskip
 \begin{columns}
 \column{.25\textwidth}
-\centerline{\input{figure-pensquare}}%
+\centerline{\includeMPgraphics{figure-pensquare}}%
 \column{.75\textwidth}
 {\LARGE\literal{pensquare}}%
 \end{columns}
@@ -118,8 +118,8 @@ fill unitsquare scaled 2cm\par
 \begin{columns}
 \column{.25\textwidth}
 \centerline{%
-\only<1>{\input{figure-draw-pencircle}}%
-\only<2>{\input{figure-draw-pencircle-marked}}%
+\only<1>{\includeMPgraphics{figure-draw-pencircle}}%
+\only<2>{\includeMPgraphics{figure-draw-pencircle-marked}}%
 }%
 \column{.75\textwidth}
 \begin{programlisting}
@@ -133,8 +133,8 @@ draw fullcircle\par
 \begin{columns}
 \column{.25\textwidth}
 \centerline{%
-\only<1>{\input{figure-draw-pencircle-scaled}}%
-\only<2>{\input{figure-draw-pencircle-scaled-marked}}%
+\only<1>{\includeMPgraphics{figure-draw-pencircle-scaled}}%
+\only<2>{\includeMPgraphics{figure-draw-pencircle-scaled-marked}}%
 }%
 \column{.75\textwidth}
 \begin{programlisting}
@@ -150,8 +150,8 @@ draw fullcircle\par
 \begin{columns}
 \column{.25\textwidth}
 \centerline{%
-\only<1>{\input{figure-draw-penrazor}}%
-\only<2>{\input{figure-draw-penrazor-marked}}%
+\only<1>{\includeMPgraphics{figure-draw-penrazor}}%
+\only<2>{\includeMPgraphics{figure-draw-penrazor-marked}}%
 }%
 \column{.75\textwidth}
 \begin{programlisting}
@@ -164,8 +164,8 @@ draw fullcircle\par
 \begin{columns}
 \column{.25\textwidth}
 \centerline{%
-\only<1>{\input{figure-draw-penrazor-rotated}}%
-\only<2>{\input{figure-draw-penrazor-rotated-marked}}%
+\only<1>{\includeMPgraphics{figure-draw-penrazor-rotated}}%
+\only<2>{\includeMPgraphics{figure-draw-penrazor-rotated-marked}}%
 }%
 \column{.75\textwidth}
 \begin{programlisting}
@@ -181,8 +181,8 @@ draw fullcircle\par
 \begin{columns}
 \column{.25\textwidth}
 \centerline{%
-\only<1>{\input{figure-draw-pensquare}}%
-\only<2>{\input{figure-draw-pensquare-marked}}%
+\only<1>{\includeMPgraphics{figure-draw-pensquare}}%
+\only<2>{\includeMPgraphics{figure-draw-pensquare-marked}}%
 }%
 \column{.75\textwidth}
 \begin{programlisting}
@@ -197,8 +197,8 @@ draw fullcircle\par
 \begin{columns}
 \column{.25\textwidth}
 \centerline{%
-\only<1>{\input{figure-draw-pensquare-yscaled}}%
-\only<2>{\input{figure-draw-pensquare-yscaled-marked}}%
+\only<1>{\includeMPgraphics{figure-draw-pensquare-yscaled}}%
+\only<2>{\includeMPgraphics{figure-draw-pensquare-yscaled-marked}}%
 }%
 \column{.75\textwidth}
 \begin{programlisting}
@@ -216,9 +216,9 @@ draw fullcircle\par
 \begin{columns}
 \column{.25\textwidth}
 \centerline{%
-\only<1>{\input{figure-drawarrow}}%
-\only<2>{\input{figure-drawarrow-reverse}}%
-\only<3>{\input{figure-drawdblarrow}}%
+\only<1>{\includeMPgraphics{figure-drawarrow}}%
+\only<2>{\includeMPgraphics{figure-drawarrow-reverse}}%
+\only<3>{\includeMPgraphics{figure-drawdblarrow}}%
 }%
 \column{.75\textwidth}
 \begin{programlisting}
@@ -236,9 +236,9 @@ draw fullcircle\par
 \begin{columns}
 \column{.5\textwidth}
 \centerline{%
-\only<1>{\input{figure-path-linejoin-mitered}}%
-\only<2>{\input{figure-path-linejoin-rounded}}%
-\only<3>{\input{figure-path-linejoin-beveled}}%
+\only<1>{\includeMPgraphics{figure-path-linejoin-mitered}}%
+\only<2>{\includeMPgraphics{figure-path-linejoin-rounded}}%
+\only<3>{\includeMPgraphics{figure-path-linejoin-beveled}}%
 }%
 \column{.5\textwidth}
 \begin{programlisting}
@@ -253,9 +253,9 @@ draw p;
 \begin{columns}
 \column{.5\textwidth}
 \centerline{%
-\only<1>{\input{figure-path-linecap-butt}}%
-\only<2>{\input{figure-path-linecap-rounded}}%
-\only<3>{\input{figure-path-linecap-squared}}%
+\only<1>{\includeMPgraphics{figure-path-linecap-butt}}%
+\only<2>{\includeMPgraphics{figure-path-linecap-rounded}}%
+\only<3>{\includeMPgraphics{figure-path-linecap-squared}}%
 }%
 \column{.5\textwidth}
 \begin{programlisting}

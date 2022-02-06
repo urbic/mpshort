@@ -1,4 +1,4 @@
-\sectionwithlogo{Пути}{\scalebox{.8}{\input{figure-path-rotatingnumber-1}}}
+\sectionwithlogo{Пути}{\scalebox{.8}{\includeMPgraphics{figure-path-rotatingnumber-1}}}
 
 \begin{frame}{Полином Бернштейна}
 Задаётся $n+1$~точкой $z_0$, $z_1$,~$\ldots$, $z_n$
@@ -49,7 +49,7 @@
 	z(t)\equiv z_0
 	\]
 \begin{center}
-\input{figure-besier-0}\\[4ex]
+\includeMPgraphics{figure-besier-0}\\[4ex]
 точка
 \end{center}
 \end{frame}
@@ -59,7 +59,7 @@
 	z(t)=z_0(1-t)+z_1t
 	\]
 \begin{center}
-\input{figure-besier-1}\\[4ex]
+\includeMPgraphics{figure-besier-1}\\[4ex]
 прямая линия
 \end{center}
 \end{frame}
@@ -69,7 +69,7 @@
 	z(t)=z_0(1-t)^2+2z_1(1-t)t+z_2t^2
 	\]
 \begin{center}
-\input{figure-besier-2}\\[4ex]
+\includeMPgraphics{figure-besier-2}\\[4ex]
 парабола
 \end{center}
 \end{frame}
@@ -79,7 +79,7 @@
 	z(t)=z_0(1-t)^3+3z_1(1-t)^2t+3z_2(1-t)t^2+z_3t^3
 	\]
 \begin{center}
-\input{figure-besier-3}\\[4ex]
+\includeMPgraphics{figure-besier-3}\\[4ex]
 кубическая кривая (в~школе не проходят)
 \end{center}
 \end{frame}
@@ -99,7 +99,7 @@
 \begin{frame}{Построение точки~$z\bigl(\frac12\bigr)$ для кривой $3$"=й
 степени}
 \begin{center}
-\input{figure-besier-construction}
+\includeMPgraphics{figure-besier-construction}
 \end{center}
 \end{frame}
 
@@ -117,23 +117,23 @@ $z\bigl(\frac12\bigr)$, $z_{1223}$, $z_{23}$, $z_3$.
 
 \begin{frame}{Примеры кривых Безье $3$"=й степени}
 \begin{center}
-\input{figure-besier-example-1}\hfill
-\input{figure-besier-example-2}\hfill
-\input{figure-besier-example-5}\\[4ex]
-\input{figure-besier-example-3}\hfill
-\input{figure-besier-example-4}\hfill
-\input{figure-besier-example-6}
+\includeMPgraphics{figure-besier-example-1}\hfill
+\includeMPgraphics{figure-besier-example-2}\hfill
+\includeMPgraphics{figure-besier-example-5}\\[4ex]
+\includeMPgraphics{figure-besier-example-3}\hfill
+\includeMPgraphics{figure-besier-example-4}\hfill
+\includeMPgraphics{figure-besier-example-6}
 \end{center}
 \end{frame}
 
 \begin{frame}{Пути в~\hologo{METAPOST}}
 \begin{columns}
 \column{.4\textwidth}
-\only<1>{\input{figure-path-seg}}
-\only<2>{\input{figure-path-seg-0}}
-\only<3>{\input{figure-path-seg-1}}
-\only<4>{\input{figure-path-seg-2}}
-\only<5>{\input{figure-path-seg-3}}
+\only<1>{\includeMPgraphics{figure-path-seg}}
+\only<2>{\includeMPgraphics{figure-path-seg-0}}
+\only<3>{\includeMPgraphics{figure-path-seg-1}}
+\only<4>{\includeMPgraphics{figure-path-seg-2}}
+\only<5>{\includeMPgraphics{figure-path-seg-3}}
 \column{.6\textwidth}
 Пути в~\hologo{METAPOST} составлены из сегментов~— кривых Безье:\\
 \bigskip
@@ -152,9 +152,9 @@ $z\bigl(\frac12\bigr)$, $z_{1223}$, $z_{23}$, $z_3$.
 \begin{columns}
 \column{.4\textwidth}
 \begin{center}
-\only<1>{\input{figure-path-draw}}%
-\only<2>{\input{figure-path-fill}}%
-\only<3>{\input{figure-path-clip}}%
+\only<1>{\includeMPgraphics{figure-path-draw}}%
+\only<2>{\includeMPgraphics{figure-path-fill}}%
+\only<3>{\includeMPgraphics{figure-path-clip}}%
 \end{center}
 \column{.6\textwidth}
 Пути можно:
@@ -193,9 +193,9 @@ $z\bigl(\frac12\bigr)$, $z_{1223}$, $z_{23}$, $z_3$.
 \begin{columns}
 \column{.6\textwidth}
 \begin{center}
-\only<2>{\input{figure-path-rotatingnumber-1}}%
-\only<3>{\input{figure-path-rotatingnumber-2}}%
-\only<4>{\input{figure-path-rotatingnumber-3}}%
+\only<2>{\includeMPgraphics{figure-path-rotatingnumber-1}}%
+\only<3>{\includeMPgraphics{figure-path-rotatingnumber-2}}%
+\only<4>{\includeMPgraphics{figure-path-rotatingnumber-3}}%
 \end{center}
 \column{.4\textwidth}
 \only<2-4>{\large число вращения \alert{\only<2>{1}\only<3>{0}\only<4>{2}}}%
@@ -207,10 +207,10 @@ $z\bigl(\frac12\bigr)$, $z_{1223}$, $z_{23}$, $z_3$.
 \begin{columns}
 \column{.5\textwidth}
 \begin{center}
-\only<1>{\input{figure-quartercircle}}%
-\only<2>{\input{figure-halfcircle}}%
-\only<3>{\input{figure-fullcircle}}%
-\only<4>{\input{figure-unitsquare}}%
+\only<1>{\includeMPgraphics{figure-quartercircle}}%
+\only<2>{\includeMPgraphics{figure-halfcircle}}%
+\only<3>{\includeMPgraphics{figure-fullcircle}}%
+\only<4>{\includeMPgraphics{figure-unitsquare}}%
 \end{center}
 \column{.5\textwidth}
 {\LARGE\literal{%
@@ -235,10 +235,10 @@ $z\bigl(\frac12\bigr)$, $z_{1223}$, $z_{23}$, $z_3$.
 \begin{columns}
 \column{.4\textwidth}
 \begin{center}
-\only<1>{\input{figure-angular-1}}%
-\only<2>{\input{figure-angular-2}}%
-\only<3>{\input{figure-angular-3}}%
-\only<4>{\input{figure-angular-4}}
+\only<1>{\includeMPgraphics{figure-angular-1}}%
+\only<2>{\includeMPgraphics{figure-angular-2}}%
+\only<3>{\includeMPgraphics{figure-angular-3}}%
+\only<4>{\includeMPgraphics{figure-angular-4}}
 \end{center}
 \column{.6\textwidth}
 \begin{programlisting}
@@ -268,9 +268,9 @@ $z\bigl(\frac12\bigr)$, $z_{1223}$, $z_{23}$, $z_3$.
 \begin{columns}
 \column{.5\textwidth}
 \begin{center}
-\only<1>{\input{figure-pathjoin}}%
-\only<2>{\input{figure-pathjoin-1}}
-\only<3>{\input{figure-pathjoin-2}}
+\only<1>{\includeMPgraphics{figure-pathjoin}}%
+\only<2>{\includeMPgraphics{figure-pathjoin-1}}
+\only<3>{\includeMPgraphics{figure-pathjoin-2}}
 \end{center}
 \column{.5\textwidth}
 \begin{center}
@@ -294,9 +294,9 @@ p1}%
 \begin{columns}
 \column{.5\textwidth}
 \begin{center}
-\only<1>{\input{figure-pathjoin}}%
-\only<2>{\input{figure-pathjoin-3}}
-\only<3>{\input{figure-pathjoin-4}}
+\only<1>{\includeMPgraphics{figure-pathjoin}}%
+\only<2>{\includeMPgraphics{figure-pathjoin-3}}
+\only<3>{\includeMPgraphics{figure-pathjoin-4}}
 \end{center}
 \column{.5\textwidth}
 \begin{center}
@@ -327,11 +327,11 @@ $p_2$ к~$p_1$.
 \begin{frame}{Указание направлений}
 \begin{columns}
 \column{.4\textwidth}
-\only<1>{\input{figure-pathdir-1}}%
-\only<2>{\input{figure-pathdir-2}}%
-\only<3>{\input{figure-pathdir-3}}%
-\only<4>{\input{figure-pathdir-4}}%
-\only<5>{\input{figure-pathdir-5}}%
+\only<1>{\includeMPgraphics{figure-pathdir-1}}%
+\only<2>{\includeMPgraphics{figure-pathdir-2}}%
+\only<3>{\includeMPgraphics{figure-pathdir-3}}%
+\only<4>{\includeMPgraphics{figure-pathdir-4}}%
+\only<5>{\includeMPgraphics{figure-pathdir-5}}%
 \column{.6\textwidth}
 \begin{programlisting}
 z1\{dir
@@ -393,7 +393,7 @@ z1\{dir
 \begin{frame}{Оператор \literal{point of}}
 \begin{columns}
 \column{.4\textwidth}
-\input{figure-pointof}
+\includeMPgraphics{figure-pointof}
 \column{.6\textwidth}
 На рисунке на пути $p={}$\literal{fullcircle} расставлены отметки в~точках
 \literal{point~}$t$\literal{~of~}$p$ с~шагом~$\frac14$.

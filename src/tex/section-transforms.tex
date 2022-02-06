@@ -1,5 +1,5 @@
 \sectionwithlogo{Аффинные преобразования}
-{\input{figure-cat-transformed}}
+	{\includeMPgraphics{figure-cat-transformed}}
 
 \begin{frame}{Определение аффинных преобразований плоскости}
 \emph{Аффинные преобразования} плоскости задаются шестёркой чисел $\alert<2>{T_{xx}}$,
@@ -45,14 +45,14 @@ $\alert<2>{T_{yy}}$, $\alert<2>{T_y}$ при помощи формул:
 \bigskip
 \begin{center}
 \only<1->{\includegraphics[height=124.874434pt]{figure-arnold}}%
-\only<2>{\quad\input{figure-cat}}%
+\only<2>{\quad\includeMPgraphics{figure-cat}}%
 \end{center}
 \end{frame}
 
 \begin{frame}{Тождественное преобразование}
 \begin{center}
 \LARGE
-\input{figure-cat-identity}\\[4ex]
+\includeMPgraphics{figure-cat-identity}\\[4ex]
 \literal{identity}%
 \end{center}
 \end{frame}
@@ -60,7 +60,7 @@ $\alert<2>{T_{yy}}$, $\alert<2>{T_y}$ при помощи формул:
 \begin{frame}{Сдвиг (параллельный перенос)}
 \begin{center}
 \LARGE
-\only<1>{\input{figure-cat-shifted}\\[4ex]
+\only<1>{\includeMPgraphics{figure-cat-shifted}\\[4ex]
 \literal{identity shifted (.75, .5)}}%
 \only<2>{%
 $(x,y)$ \literal{shifted} $(a,b)$\\
@@ -73,7 +73,7 @@ $(x+a,y+b)$
 \begin{frame}{Поворот}
 \begin{center}
 \LARGE
-\only<1>{\input{figure-cat-rotated}\\[4ex]
+\only<1>{\includeMPgraphics{figure-cat-rotated}\\[4ex]
 \literal{identity rotated 60}}%
 \only<2>{%
 $(x,y)$ \literal{rotated} $\theta$\\
@@ -86,8 +86,8 @@ $(x\cos\theta-y\sin\theta,x\sin\theta+y\cos\theta)$
 \begin{frame}{Растяжение}
 \begin{center}
 \LARGE
-\only<1>{\input{figure-cat-scaled-1}}%
-\only<2>{\input{figure-cat-scaled-2}}%
+\only<1>{\includeMPgraphics{figure-cat-scaled-1}}%
+\only<2>{\includeMPgraphics{figure-cat-scaled-2}}%
 \only<1,2>{\\[4ex]
 \literal{identity scaled \only<1>{1.5}\only<2>{-.5}}}%
 \only<3>{%
@@ -101,8 +101,8 @@ $(kx,ky)$
 \begin{frame}{Анаморфотные преобразования}
 \begin{center}
 \LARGE
-\only<1>{\input{figure-cat-xscaled}}%
-\only<3>{\input{figure-cat-yscaled}}%
+\only<1>{\includeMPgraphics{figure-cat-xscaled}}%
+\only<3>{\includeMPgraphics{figure-cat-yscaled}}%
 \only<1,3>{\\[4ex]
 \literal{identity \only<1>{\alert{x}scaled 2.5}\only<3>{\alert{y}scaled .25}}}%
 \only<2,4>{%
@@ -116,7 +116,7 @@ $(\only<2>{k}x,\only<4>{k}y)$
 \begin{frame}{Наклон}
 \begin{center}
 \LARGE
-\only<1>{\input{figure-cat-slanted}\\[4ex]
+\only<1>{\includeMPgraphics{figure-cat-slanted}\\[4ex]
 \literal{identity slanted 2}}%
 \only<2>{%
 $(x,y)$ \literal{slanted} $k$\\
@@ -129,7 +129,7 @@ $(x+ky,y)$
 \begin{frame}{Поворот вокруг заданной точки}
 \begin{center}
 \LARGE
-\only<1>{\input{figure-cat-rotatedabout}%
+\only<1>{\includeMPgraphics{figure-cat-rotatedabout}%
 \\[4ex]
 \literal{identity}\par
 \literal{rotatedabout((1, 1), 90)}}%
@@ -143,7 +143,7 @@ $p$ \literal{shifted} $-z$ \literal{rotated} $\theta$ \literal{shifted} $z$
 
 \begin{frame}{Осевая симметрия (зеркальное отражение)}
 \begin{center}
-\input{figure-cat-reflectedabout}%
+\includeMPgraphics{figure-cat-reflectedabout}%
 \\[4ex]
 {\LARGE
 \literal{identity}\par
@@ -153,7 +153,7 @@ $p$ \literal{shifted} $-z$ \literal{rotated} $\theta$ \literal{shifted} $z$
 
 \begin{frame}{Аффинное преобразование общего вида}
 \begin{center}
-\input{figure-cat-transformed}%
+\includeMPgraphics{figure-cat-transformed}%
 \\[4ex]
 {\LARGE
 \literal{identity scaled .8 rotated -30}\par

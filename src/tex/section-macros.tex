@@ -1,5 +1,5 @@
 \sectionwithlogo{Макрокоманды}
-	{\scalebox{.9}{\input{figure-tree-10}}}
+	{\scalebox{.9}{\includeMPgraphics{figure-tree-10}}}
 
 \begin{frame}{Метод декомпозиции в~программировании}
 В~соответствии с~методом декомпозиции программист стремится разбивать
@@ -356,7 +356,7 @@ enddef;
 \begin{frame}{Использование макрокоманды \literal{circumcircle}}
 \begin{columns}
 \column{.4\textwidth}
-\input{figure-circumcircle}
+\includeMPgraphics{figure-circumcircle}
 \column{.6\textwidth}
 \begin{programlisting}
 z1=origin;\par
@@ -388,7 +388,7 @@ enddef;
 \end{frame}
 
 \begin{frame}{Дерево}
-\centerline{\input{figure-tree-10}}
+\centerline{\includeMPgraphics{figure-tree-10}}
 \end{frame}
 
 \begin{frame}{Дерево как рекурсивная структура}
@@ -420,24 +420,24 @@ enddef;
 \only<11>{10}%
 -й порядок}
 \centerline{%
-\only<1>{\input{figure-tree-0}}%
-\only<2>{\input{figure-tree-1}}%
-\only<3>{\input{figure-tree-2}}%
-\only<4>{\input{figure-tree-3}}%
-\only<5>{\input{figure-tree-4}}%
-\only<6>{\input{figure-tree-5}}%
-\only<7>{\input{figure-tree-6}}%
-\only<8>{\input{figure-tree-7}}%
-\only<9>{\input{figure-tree-8}}%
-\only<10>{\input{figure-tree-9}}%
-\only<11>{\input{figure-tree-10}}%
+\only<1>{\includeMPgraphics{figure-tree-0}}%
+\only<2>{\includeMPgraphics{figure-tree-1}}%
+\only<3>{\includeMPgraphics{figure-tree-2}}%
+\only<4>{\includeMPgraphics{figure-tree-3}}%
+\only<5>{\includeMPgraphics{figure-tree-4}}%
+\only<6>{\includeMPgraphics{figure-tree-5}}%
+\only<7>{\includeMPgraphics{figure-tree-6}}%
+\only<8>{\includeMPgraphics{figure-tree-7}}%
+\only<9>{\includeMPgraphics{figure-tree-8}}%
+\only<10>{\includeMPgraphics{figure-tree-9}}%
+\only<11>{\includeMPgraphics{figure-tree-10}}%
 }
 \end{frame}
 
 \begin{frame}{Построение дерева}
 \begin{columns}
 \column{.4\textwidth}
-\input{figure-tree-labels-1}
+\includeMPgraphics{figure-tree-labels-1}
 \column{.6\textwidth}
 \only<1>{%
 Правая ветка дерева отклоняется от вертикали в~пределах закрашенного сектора.
@@ -604,7 +604,7 @@ enddef;
 
 \begin{columns}
 \column{.4\textwidth}
-\centerline{\input{figure-graph-pow-x-x}}
+\centerline{\includeMPgraphics{figure-graph-pow-x-x}}
 \column{.6\textwidth}
 \begin{programlisting}
 vardef f(expr x)=x**x enddef;\par
@@ -645,7 +645,7 @@ draw graph.g(0, 1, .01)\par
 \end{frame}
 
 \begin{frame}{Пример с~нелинейным уравнением}
-\centerline{\input{figure-equalincircles}}
+\centerline{\includeMPgraphics{figure-equalincircles}}
 
 Требуется провести чевиану в~треугольнике так, чтобы она разделила его на два
 треугольника с~равными радиусами вписанных кругов.
@@ -694,6 +694,6 @@ draw incircle(z1, z4, z3);\par
 draw incircle(z4, z2, z3);\par
 \end{programlisting}
 \column{.45\textwidth}
-\centerline{\input{figure-equalincircles}}
+\centerline{\includeMPgraphics{figure-equalincircles}}
 \end{columns}
 \end{frame}

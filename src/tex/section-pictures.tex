@@ -1,5 +1,5 @@
 \sectionwithlogo{Картинки}
-	{\input{figure-houses}}
+	{\includeMPgraphics{figure-houses}}
 
 \begin{frame}{Переменная \literal{currentpicture}}
 В~процессе рисования с~помощью команд \literal{draw} и~\literal{fill} текущее
@@ -42,7 +42,7 @@ PostScript-файла).
 (это рисунок, открывающий настоящий раздел).
 
 \column{.5\textwidth}
-\centerline{\input{figure-houses}}
+\centerline{\includeMPgraphics{figure-houses}}
 \end{columns}
 \end{frame}
 
@@ -61,7 +61,7 @@ PostScript-файла).
 различным аффинным преобразованиям. Картинка заранее заготовлена в~переменной
 \literal{house}, имеющей тип \literal{picture}:
 \column{.25\textwidth}
-\centerline{\input{figure-house}}
+\centerline{\includeMPgraphics{figure-house}}
 \end{columns}
 \end{frame}
 
@@ -113,7 +113,7 @@ endfor}%
 \begin{frame}{Команда \literal{uniformdeviate}}
 \begin{columns}[onlytextwidth]
 \column{.25\textwidth}
-\input{figure-uniformdeviate}
+\includeMPgraphics{figure-uniformdeviate}
 \column{.75\textwidth}
 
 По площади квадратика размером 2~см равномерно разбросаны 300~точек, чьи
@@ -139,7 +139,7 @@ endfor
 \begin{frame}{Команда \literal{normaldeviate}}
 \begin{columns}[onlytextwidth]
 \column{.25\textwidth}
-\input{figure-normaldeviate}
+\includeMPgraphics{figure-normaldeviate}
 \column{.75\textwidth}
 А~теперь разбросаны 300~точек, чьи координаты получены с~помощью команды
 \literal{normaldeviate}. Это похоже на~прицельную стрельбу в~центр квадрата,
@@ -162,7 +162,7 @@ endfor
 описывается формулой $e^{-x^2\fracslash2}$, её график имеет колоколообразную
 форму:
 \begin{center}
-\input{figure-gaussdensity}
+\includeMPgraphics{figure-gaussdensity}
 \end{center}
 
 Такое распределение ещё называют \emph{гауссовским}.
@@ -171,8 +171,8 @@ endfor
 \begin{frame}{Вырезание}
 \begin{columns}[onlytextwidth,c]
 \column{.33333\textwidth}
-\only<1>{\input{figure-clipping-1}}%
-\only<2>{\input{figure-clipping-2}}%
+\only<1>{\includeMPgraphics{figure-clipping-1}}%
+\only<2>{\includeMPgraphics{figure-clipping-2}}%
 \column{.6\textwidth}
 \begin{programlisting}
 for j:=-10 upto 10:\par
@@ -195,9 +195,9 @@ endfor\par
 \begin{columns}[onlytextwidth]
 \column{.33333\textwidth}
 \centering
-\only<1>{\input{figure-texture-1}}%
-\only<2>{\input{figure-texture-2}}%
-\only<3>{\input{figure-texture-3}}%
+\only<1>{\includeMPgraphics{figure-texture-1}}%
+\only<2>{\includeMPgraphics{figure-texture-2}}%
+\only<3>{\includeMPgraphics{figure-texture-3}}%
 \column{.6\textwidth}
 \only<1-2>{
 
@@ -219,7 +219,7 @@ endfor\par
 \begin{columns}[onlytextwidth]
 \column{.33333\textwidth}
 \centering
-\input{figure-texture-3}%
+\includeMPgraphics{figure-texture-3}%
 \column{.6\textwidth}
 \begin{programlisting}
 \only<1>{fill unitsquare scaled 2.5cm\par%

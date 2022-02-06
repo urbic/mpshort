@@ -1,8 +1,8 @@
-\sectionwithlogo{Пример}{\input{figure-example}}
+\sectionwithlogo{Пример}{\includeMPgraphics{figure-example}}
 
 \begin{frame}{Пример: шаг за шагом}
 \only<1>{\begin{center}
-\input{figure-example}
+\includeMPgraphics{figure-example}
 \end{center}}
 
 \only<2>{Эта команда начинает рисунок №~1:
@@ -23,7 +23,7 @@ z6=(2cm, 3cm);
 \only<4>{%
 \begin{columns}
 \column{.4\textwidth}
-\input{figure-example-1}
+\includeMPgraphics{figure-example-1}
 \column{.6\textwidth}
 Рисуем координатные оси:
 \begin{programlisting}
@@ -35,7 +35,7 @@ drawarrow z3--z4;
 \only<5>{%
 \begin{columns}
 \column{.4\textwidth}
-\input{figure-example-2}%
+\includeMPgraphics{figure-example-2}%
 \column{.6\textwidth}
 Рисуем сплошной синий круг диаметром $1$~см:
 \begin{programlisting}
@@ -49,7 +49,7 @@ fill fullcircle\par
 \only<6>{%
 \begin{columns}
 \column{.4\textwidth}%
-\input{figure-example-3}%
+\includeMPgraphics{figure-example-3}%
 \column{.6\textwidth}%
 Рисуем контурную зелёную окружность диаметром $2$~см:
 \begin{programlisting}
@@ -63,7 +63,7 @@ draw fullcircle\par
 \only<7>{%
 \begin{columns}
 \column{.3\textwidth}%
-\input{figure-example}%
+\includeMPgraphics{figure-example}%
 \column{.7\textwidth}%
 Наносим надписи (метки):
 \begin{programlisting}

@@ -1,6 +1,6 @@
 \sectionwithlogo{Управляющие конструкции}
-	%{\scalebox{.8}{\input{figure-for-3}}}
-	{\input{figure-for-3}}
+	%{\scalebox{.8}{\includeMPgraphics{figure-for-3}}}
+	{\includeMPgraphics{figure-for-3}}
 
 \begin{frame}{Управляющие конструкции в~\hologo{METAPOST}}
 В~\hologo{METAPOST}, как и~в~других императивных языках, имеются конструкции,
@@ -12,9 +12,9 @@
 \begin{columns}
 \column{.4\textwidth}
 \centering
-\only<1>{\input{figure-for-1}}%
-\only<2>{\input{figure-for-2}}%
-\only<3>{\input{figure-for-3}}%
+\only<1>{\includeMPgraphics{figure-for-1}}%
+\only<2>{\includeMPgraphics{figure-for-2}}%
+\only<3>{\includeMPgraphics{figure-for-3}}%
 \column{.6\textwidth}
 \begin{programlisting}
 for i:=0 step 1 until 10:\par
@@ -107,7 +107,7 @@ s:=s+100;}
 Рассмотрим эту возможность на примере графика функции $y=\cos x^2$. График
 будет представлен как ломаная.
 \begin{center}
-\input{figure-graph-cossq}
+\includeMPgraphics{figure-graph-cossq}
 \end{center}
 \end{frame}
 
@@ -138,5 +138,16 @@ label.lft(btex \$y\$ etex, (0, 1.25cm));
 радиане, т.~е. $\frac{180}\pi\approx57{,}3$.
 \end{frame}
 
-\begin{frame}{Условная конструкция [текста пока нет]}
+\begin{frame}{Условная конструкция}
+
+\begin{flushleft}
+\LARGE
+\literal{if~}\replaceable{условие}\literal{:~}\replaceable{код}\\
+\only<3->{\literal{elseif~}\replaceable{условие}\literal{:~}\replaceable{код}\\
+\replaceable{…}\\
+\literal{elseif~}\replaceable{условие}\literal{:~}\replaceable{код}\\}
+\only<2->{\literal{else:~}\replaceable{код}\\}
+\literal{fi}
+\end{flushleft}
+
 \end{frame}

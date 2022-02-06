@@ -1,19 +1,18 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mpshort}[2021/11/16 -- shvetz.anton@gmail.com]
+\ProvidesClass{mpshort}[2022/01/27 -- shvetz.anton@gmail.com]
 
 \LoadClass[11pt]{beamer}
 \RequirePackage{luatex85}
-\RequirePackage{hyperref}
 \RequirePackage[babelshorthands]{polyglossia}
 \RequirePackage{microtype}
 \RequirePackage{amsmath}
 \RequirePackage{graphicx}
 \RequirePackage{unicode-math}[math-style=ISO,partial=italic]
-%\RequirePackage{mflogo}
 \RequirePackage{array}
 \RequirePackage{hologo}
 \RequirePackage{datetime2}
 \RequirePackage{luamplib}
+\RequirePackage{luacode}
 
 \setdefaultlanguage{russian}
 \setotherlanguages{english,french}
@@ -32,7 +31,6 @@
 \makeatletter
 
 \mode<presentation>
-
 
 \setbeamercolor{normal text}{fg=white,bg=black}
 \setbeamerfont{normal text}{family*=\sfdefault}
@@ -145,10 +143,6 @@
 	\begin{semiverbatim}}
 	{\end{semiverbatim}}
 
-%\renewcommand\textellipsis{...}
-
-%\renewcommand\today{\year/\month/\day}
-
 %\pgfdeclareimage[width=11pt,height=14pt]{attach}{img/stock_attach}
 %\setbeamertemplate{bibliography item}{\lower3.5pt\hbox{\hskip2pt\pgfuseimage{attach}\hskip1pt}}
 
@@ -156,11 +150,24 @@
 	{\bgroup\tabcolsep\z@\begin{tabular}{#1}}
 	{\end{tabular}\egroup}
 
-\pdfcatalog{/PageMode /FullScreen}
 \pdfpkresolution1200
+\hypersetup{pdfpagemode=FullScreen}
 
 \parskip=2ex plus.5ex minus.25ex
 
 \mplibtextextlabel{enable}
+
+%..kpse.find_file(token.scan_string(), 'mp')
+%callback.find('start_file')(3, kpse.find_file(token.scan_string(), 'mp'))
+%callback.find('stop_file')(3)
+\newcommand\includeMPgraphics[1]{%
+	\leavevmode
+	\directlua{
+		local mp_file=token.scan_string()
+		texio.write('<')
+		tex.print('\\begin{mplibcode}input '..mp_file..';\\end{mplibcode}')
+		texio.write(kpse.find_file(mp_file, 'mp'))
+		texio.write('>')
+		}#1}
 
 \makeatother
