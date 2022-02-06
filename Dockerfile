@@ -10,6 +10,7 @@ RUN zypper -n --gpg-auto-import-keys in -y --no-recommends \
 	poppler-tools \
 	texlive-beamer \
 	texlive-datetime2 \
+	texlive-fontawesome-fonts \
 	texlive-hologo \
 	texlive-hyphen-russian \
 	texlive-knuth-{lib,local} \
