@@ -45,9 +45,9 @@
 		<exec executable="pdftocairo" dir="${target}">
 			<arg value="-svg"/>
 			<arg value="-paperh"/>
-			<arg value="600"/>
+			<arg value="640"/>
 			<arg value="-paperw"/>
-			<arg value="450"/>
+			<arg value="480"/>
 			<arg value="-expand"/>
 			<arg value="-f"/>
 			<arg value="1"/>
@@ -58,7 +58,7 @@
 		</exec>
 	</target>
 
-	<target name="view" depends="compile">
+	<target name="view" depends="build">
 		<exec executable="okular" dir="${target}">
 			<arg value="--unique"/>
 			<arg value="${project.name}.pdf"/>

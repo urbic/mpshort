@@ -4,4 +4,3 @@ augroup ft_tex
 	imap <C-Space> ~
 	imap <C-@> ~
 augroup end
-

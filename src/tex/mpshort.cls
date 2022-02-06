@@ -12,7 +12,6 @@
 \RequirePackage{hologo}
 \RequirePackage{datetime2}
 \RequirePackage{luamplib}
-\RequirePackage{luacode}
 
 \setdefaultlanguage{russian}
 \setotherlanguages{english,french}
