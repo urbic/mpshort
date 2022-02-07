@@ -9,7 +9,6 @@ RUN zypper -n --gpg-auto-import-keys in -y --no-recommends \
 	iosevka-fonts \
 	poppler-tools \
 	texlive-beamer \
-	texlive-datetime2 \
 	texlive-fontawesome-fonts \
 	texlive-hologo \
 	texlive-hyphen-russian \

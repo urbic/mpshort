@@ -16,9 +16,14 @@
 
 	<target name="compile">
 		<mkdir dir="${target}"/>
-		<exec outputproperty="git.ahash" executable="git">
+		<exec outputproperty="git.log.hash" executable="git">
 			<arg value="log"/>
 			<arg value="--pretty=%H"/>
+			<arg value="-1"/>
+		</exec>
+		<exec outputproperty="git.log.time" executable="git">
+			<arg value="log"/>
+			<arg value="--pretty=%cI"/>
 			<arg value="-1"/>
 		</exec>
 		<exec outputproperty="kpsexpand.TEXINPUTS" executable="kpsexpand">
@@ -27,7 +32,11 @@
 		<exec outputproperty="kpsexpand.MPINPUTS" executable="kpsexpand">
 			<arg value="$MPINPUTS"/>
 		</exec>
-		<echo message="${git.ahash}" file="${target}/${project.name}.githash"/>
+		<echo
+			file="${target}/${project.name}.gitinfo"><!--
+-->\def\githash{${git.log.hash}}
+\def\gittime{${git.log.time}}<!--
+--></echo>
 		<exec executable="latexmk" dir="${target}">
 			<env key="TEXINPUTS" value="${kpsexpand.TEXINPUTS}:${src.tex}:${src.pdf}:${src.png}:${target.pdf}"/>
 			<env key="MPINPUTS" value="${kpsexpand.MPINPUTS}:${src.mp}"/>
@@ -66,7 +75,7 @@
 	</target>
 
 	<target name="archive">
-		<exec outputproperty="git.ahash" executable="git">
+		<exec outputproperty="git.log.hash" executable="git">
             <arg value="log"/>
             <arg value="--pretty=git%ct.%h"/>
             <arg value="-1"/>
@@ -75,7 +84,7 @@
 		<exec executable="git">
 			<arg value="archive"/>
 			<arg value="--prefix=${project.name}/"/>
-			<arg value="-o${target}/${project.name}-${git.ahash}.tar.xz"/>
+			<arg value="-o${target}/${project.name}-${git.log.hash}.tar.xz"/>
 			<arg value="HEAD"/>
 		</exec>
 	</target>

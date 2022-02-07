@@ -10,7 +10,6 @@
 \RequirePackage{unicode-math}[math-style=ISO,partial=italic]
 \RequirePackage{array}
 \RequirePackage{hologo}
-\RequirePackage{datetime2}
 \RequirePackage{luamplib}
 
 \setdefaultlanguage{russian}
@@ -168,5 +167,7 @@
 		texio.write(kpse.find_file(mp_file, 'mp'))
 		texio.write('>')
 		}#1}
+
+\input{\jobname.gitinfo}
 
 \makeatother
