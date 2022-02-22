@@ -149,7 +149,7 @@
 	{\end{tabular}\egroup}
 
 \pdfpkresolution1200
-\hypersetup{pdfpagemode=FullScreen}
+%\hypersetup{pdfpagemode=FullScreen}
 
 \parskip=2ex plus.5ex minus.25ex
 
