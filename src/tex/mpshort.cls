@@ -148,6 +148,8 @@
 	{\bgroup\tabcolsep\z@\begin{tabular}{#1}}
 	{\end{tabular}\egroup}
 
+\newcommand\slashfrac[2]{#1{\divslash}#2}
+
 \pdfpkresolution1200
 %\hypersetup{pdfpagemode=FullScreen}
 

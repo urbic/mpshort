@@ -1,0 +1,139 @@
+\sectionwithlogo{Числа, пары, арифметика}{}
+
+\begin{frame}{Числа и~пары}
+В~\hologo{METAPOST} значения числового типа используются, помимо прочего, для
+представления координат точек.
+
+Сами точки представляются как пары координат.
+\end{frame}
+
+\begin{frame}{Единицы масштаба}
+Единицей масштаба служит большой типографский пункт (\literal{bp})~— ему
+соответствует число \literal{1}. Для этой и~некоторых других традиционных для
+полиграфии единиц измерения длин в~библиотеке \nolinkurl{plain.mp} определены
+числовые переменные:
+
+\begin{center}
+\begin{tabular}{rrrl}
+\small пункт&$0{,}99626$&\literal{pt}&\includeMPgraphics{figure-dimension-pt}\\
+\small большой пункт&$1$&\literal{bp}&\includeMPgraphics{figure-dimension-bp}\\
+\small пункт Дидо́&$1{,}06601$&\literal{dd}&\includeMPgraphics{figure-dimension-dd}\\
+\small миллиметр&$2{,}83464$&\literal{mm}&\includeMPgraphics{figure-dimension-mm}\\
+\small пика&$11{,}95517$&\literal{pc}&\includeMPgraphics{figure-dimension-pc}\\
+\small ци́церо&$12{,}79213$&\literal{cc}&\includeMPgraphics{figure-dimension-cc}\\
+\small сантиметр&$28{,}34645$&\literal{cm}&\includeMPgraphics{figure-dimension-cm}\\
+\small дюйм&$72$&\literal{in}&\includeMPgraphics{figure-dimension-in}
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Числа: арифметика и~тригонометрия}
+\begin{center}
+\begin{tabular}{cc}
+\literal{+\,}$x$
+	&$+x$\\
+\literal{-\,}$x$
+	&$-x$\\
+$x$\literal{\,+\,}$y$
+	&$x+y$\\
+$x$\literal{\,-\,}$y$
+	&$x-y$\\
+$x$\literal{\,*\,}$y$
+	&$xy$\\
+$x$\literal{\,/\,}$y$
+	&$x\fracslash y$\\
+$x$\literal{\,**\,}$y$
+	&$x^y$\\
+$x$\literal{\,++\,}$y$
+	&$\sqrt{x^2+y^2}$\\
+$x$\literal{\,+-+\,}$y$
+	&$\sqrt{x^2-y^2}$\\
+\literal{sqrt~}$x$
+	&$\sqrt x$\\
+\literal{abs~}$x$
+	&$|x|$
+\end{tabular}
+\enspace\vrule\enspace
+\begin{tabular}{cc}
+\literal{floor~}$x$
+	&целая часть~$x$\\
+\literal{round~}$x$
+	&округление~$x$\\
+$x$\literal{~mod~}$y$
+	&остаток от деления~$x$ на~$y$\\
+$x$\literal{~div~}$y$
+	&целая часть отношения~$x$ и~$y$\\
+\literal{cosd~}$x$
+	&$\cos x^\circ$\\
+\literal{sind~}$x$
+	&$\sin x^\circ$\\
+$t$\literal[$a$\literal{,\,}$b$\literal]
+	&медиатор \textit{(см.~дальше)}
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Пары: декомпозиция и~арифметика}
+\begin{center}
+\begin{tabular}{cc}
+\literal{xpart~(}$x$\literal{,\,}$y$\literal{)}
+	&$x$\\
+\literal{ypart~(}$x$\literal{,\,}$y$\literal{)}
+	&$y$\\
+\literal{(}$x$\literal{,\,}$y$\literal{)\,+\,(}$u$\literal{,\,}$v$\literal{)}
+	&\literal{(}$x+u$\literal{,\,}$y+v$\literal{)}\\
+$t$\literal{\,*\,(}$x$\literal{,\,}$y$\literal{)},
+	\literal{(}$x$\literal{,\,}$y$\literal{)\,*\,}$t$
+	&\literal{(}$tx$\literal{,\,}$ty$\literal{)}\\
+\literal{(}$x$\literal{,\,}$y$\literal{)\,/\,}$t$
+	&\literal{(}$\slashfrac xt$\literal{,\,}$\slashfrac yt$\literal{)}\\
+\literal{(}$x$\literal{,\,}$y$\literal{)~dotprod~(}$u$\literal{,\,}$v$\literal{)}
+	&$xu+yv$\\
+\literal{abs~(}$x$\literal{,\,}$y$\literal{)}
+	&$\sqrt{x^2+y^2}$\\
+\literal{unitvector~(}$x$\literal{,\,}$y$\literal{)}
+	&\literal{(}$x$\literal{,\,}$y$\literal{)\,/\,abs~(}$x$\literal{,\,}$y$\literal{)}
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Медиатор}
+Для числа~$t$ и~величин $a$~и~$b$ одинакового типа, либо \literal{numeric},
+либо \literal{pair}, либо \literal{color}, в~\hologo{METAPOST} определяется
+операция \emph{медиатор (аффинная комбинация)}:
+
+\begin{center}
+\LARGE $t$\literal[$a$\literal{,~}$b$\literal]\quad$\equiv$\quad$(1-t)\,a+t\,b$
+\end{center}
+\end{frame}
+
+\begin{frame}{Медиатор}
+\begin{center}
+\LARGE
+\literal{.2[3, 8]}\quad$\equiv$\quad\literal4\\[3ex]
+\literal{.6[z1, z2]}\\
+$\equiv$\\
+{\normalsize точка, делящая отрезок от \literal{z1} до \literal{z2}
+в~отношении~$3:2$}
+\end{center}
+\end{frame}
+
+\begin{frame}{Кинематический смысл медиатора}
+\begin{columns}
+\column{.3\textwidth}
+\includeMPgraphics{figure-mediator-kin}
+\column{.7\textwidth}
+Между прочим, выражение
+	\[
+	z(t)=(1-t)z_0+tz_1
+	\]
+задаёт закон равномерного прямолинейного движения, при котором точка
+с~радиусом"=вектором~$z(t)$ в~момент времени~$t=0$ проходит через точку~$z_0$,
+а~при~$t=1$~— через~$z_1$.
+
+\bigskip
+Отрицательные значения~$t$ соответствуют точкам, находящимся на продолжении
+отрезка~$z_0z_1$ за точку~$z_0$, а~значения, бо́льшие единицы, отвечают точкам
+на продолжении этого отрезка за точку~$z_1$.
+\end{columns}
+\end{frame}
