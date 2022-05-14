@@ -36,6 +36,6 @@ label.top("$z_{12}$", z.b);
 label.urt("$z_{23}$", z.c);
 label.top("$z_{0112}$", z.ab);
 label.top("$z_{1223}$", z.bc);
-label.bot("$z\bigl(\frac12\bigr)$", z.abbc) withcolor red;
+label.bot("$z(\slashfrac12)$", z.abbc) withcolor red;
 
 endfig

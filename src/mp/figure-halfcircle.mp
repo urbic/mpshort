@@ -4,7 +4,7 @@ drawaxes(-1.5cm, -.5cm, 1.5cm, 1.5cm);
 
 draw halfcircle scaled 2cm withpen boldpen;
 
-label.bot("$\frac12$", cm*right);
-label.ulft("$\frac12$", cm*up);
+label.bot("$\slashfrac12$", cm*right);
+label.ulft("$\slashfrac12$", cm*up);
 
 endfig

@@ -4,7 +4,7 @@ drawaxes(-1.5cm, -1.5cm, 1.5cm, 1.5cm);
 
 draw fullcircle scaled 2cm withpen boldpen;
 
-label.lrt("$\frac12$", cm*right);
-label.ulft("$\frac12$", cm*up);
+label.lrt("$\slashfrac12$", cm*right);
+label.ulft("$\slashfrac12$", cm*up);
 
 endfig

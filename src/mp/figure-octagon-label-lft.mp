@@ -1,14 +1,16 @@
 beginfig(0)
 
-draw for d:=0 upto 7: cm*dir(45d)-- endfor cycle;
+u:=cm;
 
-label.rt("$P_0$", cm*right);
-label.urt("$P_1$", cm*dir 45);
-label.top("$P_2$", cm*up);
-label.ulft("$P_3$", cm*dir 135);
-label.lft("$P_4$", cm*left);
+draw for d:=0 upto 7: u*dir(45d)-- endfor cycle;
 
-draw (-1.5cm, -1.5cm) withpen nullpen withcolor black;
-draw (1.5cm, 1.5cm) withpen nullpen withcolor black;
+label.rt("$P_0$", u*right);
+label.urt("$P_1$", u*dir 45);
+label.top("$P_2$", u*up);
+label.ulft("$P_3$", u*dir 135);
+label.lft("$P_4$", u*left);
+
+setbounds currentpicture to unitsquare
+	scaled 3.5u shifted (1.75u*(-1, -1));
 
 endfig
