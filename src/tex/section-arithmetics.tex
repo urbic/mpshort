@@ -63,10 +63,10 @@ $x$\literal{~mod~}$y$
 	&остаток от деления~$x$ на~$y$\\
 $x$\literal{~div~}$y$
 	&целая часть отношения~$x$ и~$y$\\
-\literal{cosd~}$x$
-	&$\cos x^\circ$\\
-\literal{sind~}$x$
-	&$\sin x^\circ$\\
+\literal{cosd~}$\theta$
+	&$\cos(\theta\cdot\slashfrac\pi{180})$\\
+\literal{sind~}$\theta$
+	&$\sin(\theta\cdot\slashfrac\pi{180})$\\
 $t$\literal[$a$\literal{,\,}$b$\literal]
 	&медиатор \textit{(см.~дальше)}
 \end{tabular}
@@ -92,7 +92,12 @@ $t$\literal{\,*\,(}$x$\literal{,\,}$y$\literal{)},
 \literal{abs~(}$x$\literal{,\,}$y$\literal{)}
 	&$\sqrt{x^2+y^2}$\\
 \literal{unitvector~(}$x$\literal{,\,}$y$\literal{)}
-	&\literal{(}$x$\literal{,\,}$y$\literal{)\,/\,abs~(}$x$\literal{,\,}$y$\literal{)}
+	&\literal{(}$x$\literal{,\,}$y$\literal{)\,/\,abs~(}$x$\literal{,\,}$y$\literal{)}\\
+\literal{angle~(}$x$\literal{,\,}$y$\literal{)}
+	&$\slashfrac{180}\pi\cdot\arctg(\slashfrac yx)$\\
+\literal{dir~}$\theta$
+	&\literal{(}$\cos(\theta\cdot\slashfrac\pi{180})$%
+	\literal{,\,}$\sin(\theta\cdot\slashfrac\pi{180})$\literal{)}
 \end{tabular}
 \end{center}
 \end{frame}
