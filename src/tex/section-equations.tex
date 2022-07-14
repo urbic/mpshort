@@ -126,8 +126,7 @@ z=whatever[z1, z2];
 Вторую недостающую точку этого перпендикуляра можно найти, сдвинув точку~$z_3$
 на вектор~$z_1z_2$, повёрнутый на~$90^\circ$:
 \begin{programlisting}
-z=whatever[z3,\par
-~~~~~~~~z3+((z2-z1) rotated 90)];
+z=whatever[z3, z3+((z2-z1) rotated 90)];
 \end{programlisting}
 \end{columns}
 \end{frame}

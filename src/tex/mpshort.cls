@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mpshort}[2022/01/27 -- shvetz.anton@gmail.com]
+\ProvidesClass{mpshort}[2022/05/31 -- shvetz.anton@gmail.com]
 
 \LoadClass[11pt]{beamer}
 \RequirePackage{luatex85}
@@ -78,15 +78,15 @@
 
 \setbeamertemplate{bibliography item}[triangle]
 
-%\defbeamertemplate*{title page}{customized}[1][]                               
-%{                                                                             
-%    \usebeamerfont{title}\inserttitle\par
-%    \bigskip
-%    \usebeamerfont{author}\insertauthor\par
-%    %\usebeamerfont{email}\insertemail\par
-%    \usebeamerfont{institute}\insertinstitute\par
-%    \usebeamerfont{date}\insertdate\par
-%    %\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic
+%\defbeamertemplate*{title page}{customized}[1][]
+%{
+%	\usebeamerfont{title}\inserttitle\par
+%	\bigskip
+%	\usebeamerfont{author}\insertauthor\par
+%	%\usebeamerfont{email}\insertemail\par
+%	\usebeamerfont{institute}\insertinstitute\par
+%	\usebeamerfont{date}\insertdate\par
+%	%\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic
 %}
 
 \mathsurround=\p@

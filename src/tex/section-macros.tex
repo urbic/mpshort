@@ -318,6 +318,22 @@ enddef;
 \end{programlisting}
 \end{frame}
 
+\begin{frame}{Использование макрокоманды \literal{circumcircle}}
+\begin{columns}
+\column{.4\textwidth}
+\includeMPgraphics{figure-circumcircle}
+\column{.6\textwidth}
+\begin{programlisting}
+z1=origin;\par
+z2=(2cm, 0);\par
+z3=(.5cm, 3cm);\par
+draw z1--z2--z3--cycle;\par
+draw circumcircle(z1, z2, z3)\par
+~~~~withcolor red;
+\end{programlisting}
+\end{columns}
+\end{frame}
+
 \begin{frame}{Пример: вписанная окружность}
 Центр вписанной в~треугольник окружности найдём как точку пересечения двух
 биссектрис. Воспользуемся тем, что сумма двух единичных векторов служит
@@ -352,18 +368,17 @@ enddef;
 \end{programlisting}
 \end{frame}
 
-
-\begin{frame}{Использование макрокоманды \literal{circumcircle}}
+\begin{frame}{Использование макрокоманды \literal{incircle}}
 \begin{columns}
 \column{.4\textwidth}
-\includeMPgraphics{figure-circumcircle}
+\includeMPgraphics{figure-incircle}
 \column{.6\textwidth}
 \begin{programlisting}
 z1=origin;\par
-z2=(2cm, 0);\par
-z3=(.5cm, 3cm);\par
+z2=(4cm, 0);\par
+z3=(cm, 5cm);\par
 draw z1--z2--z3--cycle;\par
-draw circumcircle(z1, z2, z3)\par
+draw incircle(z1, z2, z3)\par
 ~~~~withcolor red;
 \end{programlisting}
 \end{columns}
