@@ -4,3 +4,6 @@ augroup ft_tex
 	imap <C-Space> ~
 	imap <C-@> ~
 augroup end
+
+se spl=ru_yo
+se spf=src/spell/mpshort.utf-8.add
