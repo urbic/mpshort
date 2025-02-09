@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mpshort}[2022/05/31 -- shvetz.anton@gmail.com]
+\ProvidesClass{mpshort}[2025/02/09 -- shvetz.anton@gmail.com]
 
-\LoadClass[11pt]{beamer}
+\LoadClass[11pt,xcolor=svgnames]{beamer}
 \RequirePackage{luatex85}
 \RequirePackage[babelshorthands]{polyglossia}
 \RequirePackage{microtype}
@@ -92,16 +92,16 @@
 \mathsurround=\p@
 
 \newcommand\sectionwithlogo[2]{%
-{\section{#1}%
-\setbeamercolor{structure}{fg=orange!75!white}%
-\frame{%\frametitle{\thesection}%
-\begin{columns}
-\column{.45\textwidth}
-\tableofcontents[currentsection]
-\column{.55\textwidth}
-\centering#2
-\end{columns}}%
-}}
+	{\section{#1}%
+	\setbeamercolor{structure}{fg=orange!75!white}%
+	\frame{%\frametitle{\thesection}%
+	\begin{columns}
+	\column{.45\textwidth}
+	\tableofcontents[currentsection]
+	\column{.55\textwidth}
+	\centering#2
+	\end{columns}}%
+	}}
 
 \renewcommand\emph[1]{{\usebeamerfont{emphasized text}\usebeamercolor[fg]{emphasized text}#1}}
 
@@ -115,24 +115,15 @@
 	{\mathsurround\z@\everymath{}$\langle$#1$\rangle$}}}
 
 \newenvironment{programlisting}%
-	%{\begin{semiverbatim}\usebeamercolor[fg]{verbatim programlisting text}\usebeamerfont{verbatim programlisting text}}%
-	%{\end{semiverbatim}}
 	{%
-		%\bgroup
 		\selectlanguage{english}
 		\usebeamercolor[fg]{verbatim programlisting text}%
 		\usebeamerfont{verbatim programlisting text}%
 		\parindent\z@\parskip\z@
-		%\par
 		\raggedright
-		%\leftskip\m@ne em%
-		%\advance\leftskip-3em%
 		\begin{semiverbatim}%
 		}
-	{%
-		\end{semiverbatim}%
-		%\egroup
-		}
+	{\end{semiverbatim}}
 
 \newenvironment{screen}
 	{\usebeamerfont{verbatim screen text}%
@@ -157,16 +148,13 @@
 
 \mplibtextextlabel{enable}
 
-%..kpse.find_file(token.scan_string(), 'mp')
-%callback.find('start_file')(3, kpse.find_file(token.scan_string(), 'mp'))
-%callback.find('stop_file')(3)
 \newcommand\includeMPgraphics[1]{%
 	\leavevmode
 	\directlua{
 		local mp_file=token.scan_string()
 		texio.write('<')
-		tex.print('\\begin{mplibcode}input '..mp_file..';\\end{mplibcode}')
 		texio.write(kpse.find_file(mp_file, 'mp'))
+		luamplib.process_mplibcode('input '..mp_file..';')
 		texio.write('>')
 		}#1}
 
