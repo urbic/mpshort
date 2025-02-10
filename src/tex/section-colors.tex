@@ -1,5 +1,7 @@
 \sectionwithlogo{Цвета}{\scalebox{.85}{\includeMPgraphics{figure-colorcircles}}}
 
+%%%%%%%%%%
+
 \begin{frame}{Цветовая схема~RGB}
 \begin{columns}
 \column{.5\textwidth}
@@ -20,32 +22,38 @@ $G$, $B$~— количества соответственно красного,
 смеси.
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Цветовой треугольник}
 \centerline{\includeMPgraphics{figure-colortriangle}}
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Предопределённые цветовые переменные}
 \begin{columns}
 \column{.33333\textwidth}
 \rightline{\includeMPgraphics{figure-square-red}}%
 \column{.66667\textwidth}
-\leftline{\LARGE\literal{red}${}\equiv{}$\literal{(1, 0, 0)}}%
+\leftline{\LARGE\literal{red}\enspace→\enspace\literal{(1, 0, 0)}}%
 \end{columns}
 \bigskip
 \begin{columns}
 \column{.33333\textwidth}
 \rightline{\includeMPgraphics{figure-square-green}}%
 \column{.66667\textwidth}
-\leftline{\LARGE\literal{green}${}\equiv{}$\literal{(0, 1, 0)}}%
+\leftline{\LARGE\literal{green}\enspace→\enspace\literal{(0, 1, 0)}}%
 \end{columns}
 \bigskip
 \begin{columns}
 \column{.33333\textwidth}
 \rightline{\includeMPgraphics{figure-square-blue}}%
 \column{.66667\textwidth}
-\leftline{\LARGE\literal{blue}${}\equiv{}$\literal{(0, 0, 1)}}%
+\leftline{\LARGE\literal{blue}\enspace→\enspace\literal{(0, 0, 1)}}%
 \end{columns}
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Цветовые выражения}
 \only<1>{%
@@ -87,6 +95,8 @@ $G$, $B$~— количества соответственно красного,
 }%
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Определение цветовых переменных}
 \begin{programlisting}
 color yellow, cyan, magenta;\par
@@ -96,6 +106,8 @@ cyan:=\only<1>{green+blue}\only<2>{(0, 1, 1)};\par
 magenta:=\only<1>{blue+red}\only<2>{(1, 0, 1)};
 \end{programlisting}
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Декомпозиция цветов}
 Операторы \literal{redpart}, \literal{greenpart} и~\literal{bluepart} извлекают
@@ -113,18 +125,10 @@ tomato=(1, .388235294117647, .27843137254902);
 \column{.66667\textwidth}
 \begin{center}
 \large
-\begin{grid}{rcl}
-\literal{redpart tomato}%
-&${}\equiv{}$
-&\literal{1}
-\\
-\literal{greenpart tomato}%
-&${}\equiv{}$
-&\literal{.38823}%
-\\
-\literal{bluepart tomato}%
-&${}\equiv{}$
-&\literal{.27843}%
+\begin{grid}{r@{\enspace→\enspace}l}
+\literal{redpart tomato}&\literal{1}\\
+\literal{greenpart tomato}&\literal{.38823}\\
+\literal{bluepart tomato}&\literal{.27843}
 \end{grid}
 \end{center}
 \end{columns}

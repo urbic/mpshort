@@ -1,11 +1,15 @@
 \sectionwithlogo{Числа, пары, арифметика}{}
 
+%%%%%%%%%%
+
 \begin{frame}{Числа и~пары}
 В~\hologo{METAPOST} значения числового типа используются, помимо прочего, для
 представления координат точек.
 
 Сами точки представляются как пары координат.
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Единицы масштаба}
 Единицей масштаба служит большой типографский пункт (\literal{bp})~— ему
@@ -27,9 +31,11 @@
 \end{center}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Числа: арифметика и~тригонометрия}
-\begin{center}
-\begin{tabular}{cc}
+\centering
+\begin{tabular}{r@{\enspace→\enspace}l}
 \literal{+\,}$x$
 	&$+x$\\
 \literal{-\,}$x$
@@ -53,8 +59,9 @@ $x$\literal{\,+-+\,}$y$
 \literal{abs~}$x$
 	&$|x|$
 \end{tabular}
-\enspace\vrule\enspace
-\begin{tabular}{cc}
+%\enspace\vrule\enspace
+~\vrule~%
+\begin{tabular}{r@{\enspace→\enspace}l}
 \literal{floor~}$x$
 	&целая часть~$x$\\
 \literal{round~}$x$
@@ -70,12 +77,13 @@ $x$\literal{~div~}$y$
 $t$\literal[$a$\literal{,\,}$b$\literal]
 	&медиатор \textit{(см.~дальше)}
 \end{tabular}
-\end{center}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Пары: декомпозиция и~арифметика}
-\begin{center}
-\begin{tabular}{cc}
+\centering
+\begin{tabular}{r@{\enspace→\enspace}l}
 \literal{xpart~(}$x$\literal{,\,}$y$\literal{)}
 	&$x$\\
 \literal{ypart~(}$x$\literal{,\,}$y$\literal{)}
@@ -99,8 +107,9 @@ $t$\literal{\,*\,(}$x$\literal{,\,}$y$\literal{)},
 	&\literal{(}$\cos(\theta\cdot\slashfrac\pi{180})$%
 	\literal{,\,}$\sin(\theta\cdot\slashfrac\pi{180})$\literal{)}
 \end{tabular}
-\end{center}
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Медиатор}
 Для числа~$t$ и~величин $a$~и~$b$ одинакового типа, либо \literal{numeric},
@@ -112,16 +121,19 @@ $t$\literal{\,*\,(}$x$\literal{,\,}$y$\literal{)},
 \end{center}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Медиатор}
-\begin{center}
+\centering
 \LARGE
 \literal{.2[3, 8]}\quad$\equiv$\quad\literal4\\[3ex]
 \literal{.6[z1, z2]}\\
 $\equiv$\\
 {\normalsize точка, делящая отрезок от \literal{z1} до \literal{z2}
 в~отношении~$3:2$}
-\end{center}
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Кинематический смысл медиатора}
 \begin{columns}
@@ -137,6 +149,7 @@ $\equiv$\\
 а~при~$t=1$~— через~$z_1$.
 
 \bigskip
+
 Отрицательные значения~$t$ соответствуют точкам, находящимся на продолжении
 отрезка~$z_0z_1$ за точку~$z_0$, а~значения, бо́льшие единицы, отвечают точкам
 на продолжении этого отрезка за точку~$z_1$.

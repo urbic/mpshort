@@ -1,6 +1,8 @@
 \sectionwithlogo{Картинки}
 	{\includeMPgraphics{figure-houses}}
 
+%%%%%%%%%%
+
 \begin{frame}{Переменная \literal{currentpicture}}
 В~процессе рисования с~помощью команд \literal{draw} и~\literal{fill} текущее
 изображение сохраняется в~переменной \literal{currentpicture} типа
@@ -17,6 +19,8 @@ PostScript-файла).
 её толщина, цвет заливки циклического контура), а~также последовательность,
 в~которой эти элементы рисовались.
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Рисование на картинках и~команда \literal{addto}}
 Имеется возможность заготавливать картинки впрок для многократного
@@ -35,6 +39,8 @@ PostScript-файла).
 \end{center}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Пример: сумасшедшие домики}
 \begin{columns}
 \column{.5\textwidth}
@@ -45,6 +51,8 @@ PostScript-файла).
 \centerline{\includeMPgraphics{figure-houses}}
 \end{columns}
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Пример: сумасшедшие домики}
 Все домики на~рисунке отличаются друг от~друга разными аффинными
@@ -64,6 +72,8 @@ PostScript-файла).
 \centerline{\includeMPgraphics{figure-house}}
 \end{columns}
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Пример: сумасшедшие домики}
 \only<1>{Объявляем новую переменную-картинку \literal{house}.
@@ -110,6 +120,8 @@ endfor}%
 \end{programlisting}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Команда \literal{uniformdeviate}}
 \begin{columns}[onlytextwidth]
 \column{.25\textwidth}
@@ -136,6 +148,8 @@ endfor
 \end{programlisting}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Команда \literal{normaldeviate}}
 \begin{columns}[onlytextwidth]
 \column{.25\textwidth}
@@ -154,6 +168,8 @@ endfor
 \end{programlisting}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Команда \literal{normaldeviate}}
 Примитивная команда \literal{normaldeviate} возвращает
 \emph{нормально"=распределённое} (псевдо)случайное число. Плотность
@@ -167,6 +183,8 @@ endfor
 
 Такое распределение ещё называют \emph{гауссовским}.
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Вырезание}
 \begin{columns}[onlytextwidth,c]
@@ -191,6 +209,8 @@ endfor\par
 \end{columns}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Текстуры}
 \begin{columns}[onlytextwidth]
 \column{.33333\textwidth}
@@ -214,6 +234,8 @@ endfor\par
 на~\literal{currentpicture}.}
 \end{columns}
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Текстуры: код\only<2>{ {\mdseries\itshape(продолжение)}}}
 \begin{columns}[onlytextwidth]

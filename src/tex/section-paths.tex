@@ -1,5 +1,7 @@
 \sectionwithlogo{Пути}{\scalebox{.8}{\includeMPgraphics{figure-path-rotatingnumber-1}}}
 
+%%%%%%%%%%
+
 \begin{frame}{Полином Бернштейна}
 Задаётся $n+1$~точкой $z_0$, $z_1$,~$\ldots$, $z_n$
 (\emph{контрольные точки}).
@@ -17,6 +19,8 @@
 Полином назван в~честь советского математика Сергея Бернштейна.
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Кривые Безье}
 Кривые, заданные параметрически полиномом Бернштейна, называются \emph{кривыми
 Безье\/} соответствующей степени.
@@ -28,6 +32,8 @@
 Названы в~честь французского инженера Пьера Безье (Piere Étienne Bésier),
 указавшего на их важность в~компьютерной графике.
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Свойства кривой Безье}
 \begin{itemize}
@@ -44,45 +50,59 @@
 \end{itemize}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Кривая Безье $0$"=й степени}
+{\Large
 	\[
 	z(t)\equiv z_0
-	\]
+	\]}
 \begin{center}
 \includeMPgraphics{figure-besier-0}\\[4ex]
 точка
 \end{center}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Кривая Безье $1$"=й степени}
+{\Large
 	\[
 	z(t)=z_0(1-t)+z_1t
-	\]
+	\]}
 \begin{center}
 \includeMPgraphics{figure-besier-1}\\[4ex]
 прямая линия
 \end{center}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Кривая Безье $2$"=й степени}
+{\Large
 	\[
 	z(t)=z_0(1-t)^2+2z_1(1-t)t+z_2t^2
-	\]
+	\]}
 \begin{center}
 \includeMPgraphics{figure-besier-2}\\[4ex]
 парабола
 \end{center}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Кривая Безье $3$"=й степени}
+{\Large
 	\[
 	z(t)=z_0(1-t)^3+3z_1(1-t)^2t+3z_2(1-t)t^2+z_3t^3
-	\]
+	\]}
 \begin{center}
 \includeMPgraphics{figure-besier-3}\\[4ex]
 кубическая кривая (в~школе не проходят)
 \end{center}
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Преимущества кривых Безье $3$"=й степени}
 \begin{itemize}
@@ -96,12 +116,14 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Построение точки~$z(\slashfrac12)$ для кривой $3$"=й
-степени}
-\begin{center}
+%%%%%%%%%%
+
+\begin{frame}{Построение точки~$z(\slashfrac12)$ для кривой $3$"=й степени}
+\centering
 \includeMPgraphics{figure-besier-construction}
-\end{center}
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Построение кривых Безье $3$"=й степени}
 Точка $z(\slashfrac12)$ строится, как показано на предыдущем слайде. Отрезок
@@ -116,16 +138,19 @@ $z_{1223}$, $z_{23}$, $z_3$.
 вычертят линию.
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Примеры кривых Безье $3$"=й степени}
-\begin{center}
+\centering
 \includeMPgraphics{figure-besier-example-1}\hfill
 \includeMPgraphics{figure-besier-example-2}\hfill
 \includeMPgraphics{figure-besier-example-5}\\[4ex]
 \includeMPgraphics{figure-besier-example-3}\hfill
 \includeMPgraphics{figure-besier-example-4}\hfill
 \includeMPgraphics{figure-besier-example-6}
-\end{center}
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Пути в~\hologo{METAPOST}}
 \begin{columns}
@@ -149,6 +174,8 @@ $z_{1223}$, $z_{23}$, $z_3$.
 \end{columns}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Использование путей в~\hologo{METAPOST}}
 \begin{columns}
 \column{.4\textwidth}
@@ -171,6 +198,8 @@ $z_{1223}$, $z_{23}$, $z_3$.
 \end{center}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Циклические пути}
 Путь называется \emph{замкнутым}, если его начальная и~конечная точки
 совпадают.
@@ -182,6 +211,8 @@ $z_{1223}$, $z_{23}$, $z_3$.
 
 Атрибут цикличности устанавливается при создании пути.
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Число вращения}
 \only<1>{%
@@ -203,6 +234,8 @@ $z_{1223}$, $z_{23}$, $z_3$.
 \end{columns}
 \transdissolve<3-4>
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Предопределённые переменные~— пути}
 \begin{columns}
@@ -231,6 +264,8 @@ $z_{1223}$, $z_{23}$, $z_3$.
 \only<3,4>{\\этот путь циклический}%
 \end{center}
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Ломаные}
 \begin{columns}
@@ -261,6 +296,8 @@ $z_{1223}$, $z_{23}$, $z_3$.
 \end{columns}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Связка путей «\literal{--}»}
 Из путей~$p_1$ и~$p_2$ образуется новый путь: он состоит из пути~$p_1$,
 \alert{прямолинейного} отрезка, соединяющего конец~$p_1$ с~началом~$p_2$,
@@ -284,6 +321,8 @@ p1}%
 \end{center}
 \end{columns}
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Связка путей «\literal{..}»}
 Из путей~$p_1$ и~$p_2$ образуется новый путь: он состоит из пути~$p_1$,
@@ -311,6 +350,8 @@ p1}%
 \end{columns}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Связка путей «\literal{\&}»}
 Из путей~$p_1$ и~$p_2$ образуется новый путь: он получается присоединением
 $p_2$ к~$p_1$.
@@ -324,6 +365,8 @@ $p_2$ к~$p_1$.
 «\literal{..}».
 \transdissolve<2>
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Указание направлений}
 \begin{columns}
@@ -347,6 +390,8 @@ z1\{dir
 \end{columns}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Параметрическая длина пути}
 Оператор \literal{length} вычисляет так называемую параметрическую длину. Это
 целое число~— количество сегментов кривых Безье, из которых составлен путь:
@@ -355,6 +400,8 @@ z1\{dir
 \literal{length}~$p$
 \end{center}
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Параметризация пути}
 Каждому числовому значению~$t\in[0;l]$, где~$l$~— параметрическая длина
@@ -372,6 +419,8 @@ z1\{dir
 Полученная точка~$z(\beta)$ и~есть искомая точка на пути~$p$, отвечающая
 значению параметра~$t$.
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Оператор \literal{point of}}
 Оператор \literal{point of} делает все эти вычисления:
@@ -391,6 +440,8 @@ z1\{dir
 большое число, представимое в~\hologo{METAPOST}.)
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Оператор \literal{point of}}
 \begin{columns}
 \column{.4\textwidth}
@@ -403,6 +454,8 @@ z1\{dir
 Если приглядеться, видно, что отметки расположены не совсем равномерно.
 \end{columns}
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Пересечение путей}
 Оператор \literal{intersectionpoint} вычисляет точку пересечения двух путей
@@ -419,6 +472,8 @@ $p_1$ \literal{intersectionpoint} $p_2$
 \transdissolve<2>
 \end{screen}
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Пересечение путей}
 Если точек пересечения путей $p_1$~и~$p_2$ несколько, вычисляется

@@ -2,11 +2,15 @@
 	%{\scalebox{.8}{\includeMPgraphics{figure-for-3}}}
 	{\includeMPgraphics{figure-for-3}}
 
+%%%%%%%%%%
+
 \begin{frame}{Управляющие конструкции в~\hologo{METAPOST}}
 В~\hologo{METAPOST}, как и~в~других императивных языках, имеются конструкции,
 влияющие на порядок выполнения команд: \emph{условная конструкция}
 и~\emph{цикл}.
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Цикл \literal{for}}
 \begin{columns}
@@ -25,6 +29,8 @@ endfor
 \end{columns}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Сокращения \literal{upto} и~\literal{downto}}
 В~циклах \literal{for} с~шагом~\literal1 можно воспользоваться удобным сокращением
 (макрокомандой) \literal{upto}:
@@ -36,6 +42,8 @@ endfor
 
 Для фразы \literal{step -1 until} имеется сокращение \literal{downto}.
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Цикл \literal{for} с~явным перечислением}
 Рассмотренные ранее циклы \literal{for} по очереди присваивали переменной цикла
@@ -49,6 +57,8 @@ for i:=2, 3, 5, 7, 11, 13, 17, 19, 23:\par
 endfor;
 \end{programlisting}
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Цикл \literal{for} с~явным перечислением}
 Перечисляемые значения не обязаны быть одного типа:
@@ -68,6 +78,8 @@ endfor;
 \end{screen}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Особенности цикла \literal{for}}
 Тело цикла \literal{for} не обязательно должно быть законченной командой. При
 обнаружении цикла \literal{for} компилятор \hologo{METAPOST} производит
@@ -82,6 +94,8 @@ s:=for i:=1 upto 100: \alert{i+} endfor 0;
 s:=\alert{1+2+3+4+5+…+95+96+97+98+99+100+}0;
 \end{programlisting}
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Особенности цикла \literal{for}}
 Впрочем, возможно и~«классическое» использование цикла для подсчёта суммы чисел
@@ -101,6 +115,8 @@ s:=s+100;}
 \end{programlisting}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Построение путей в~цикле}
 Упомянутая особенность цикла \literal{for} позволяет строить пути в~цикле.
 
@@ -110,6 +126,8 @@ s:=s+100;}
 \includeMPgraphics{figure-graph-cossq}
 \end{center}
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Построение путей в~цикле}
 \begin{programlisting}%
@@ -129,6 +147,8 @@ label.lft(btex \$y\$ etex, (0, 1.25cm));
 \end{programlisting}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Построение путей в~цикле}
 В~приведённом примере предполагается, что определены переменные типа
 \literal{pen}~— \literal{thinpen} и~\literal{boldpen}, хранящие перья, тонкое
@@ -137,6 +157,8 @@ label.lft(btex \$y\$ etex, (0, 1.25cm));
 В~числовой переменной \literal{rad} содержится количество градусов в~одном
 радиане, т.~е. $\slashfrac{180}\pi\approx57{,}3$.
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Условная конструкция}
 \begin{flushleft}
@@ -152,8 +174,10 @@ label.lft(btex \$y\$ etex, (0, 1.25cm));
 выражение.}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Примеры логических выражений}
-\begin{center}
+\centering
 \begin{tabular}{rl}
 \literal{false}&ложь\\
 \literal{true}&правда\\
@@ -169,8 +193,9 @@ $p$\literal{~or~}$q$&$p$ или $q$\\
 \literal{cycle~}$p$&путь $p$ циклический\\
 \literal{color~}$v$&значение $v$ имеет тип \literal{color}
 \end{tabular}
-\end{center}
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Цикл \literal{forever} и~оператор \literal{exitif}}
 В~\hologo{METAPOST} имеется конструкция безусловного цикла:

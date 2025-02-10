@@ -1,6 +1,8 @@
 \sectionwithlogo{Уравнения}
 	{\includeMPgraphics{figure-orthoproj-1}}
 
+%%%%%%%%%%
+
 \begin{frame}{Уравнения в~\hologo{METAPOST}}
 В~\hologo{METAPOST} имеется уникальный встроенный механизм решения линейных
 алгебраических уравнений.
@@ -8,6 +10,8 @@
 Наиболее распространённое применение этого механизма~— вычисление точки
 пересечения двух прямых, каждая из которых задана парой точек.
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Пересечение двух прямых}
 \begin{columns}
@@ -30,6 +34,8 @@
 \thetag2, и~подставить в~\thetag1, чтобы найти выражение для~$z$.
 \end{columns}
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Пересечение двух прямых}
 Векторное уравнение
@@ -54,6 +60,8 @@
 а~для~$z$~— и~того хуже.
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Пересечение двух прямых}
 Встроенный в~\hologo{METAPOST} механизм решения линейных алгебраических
 уравнений избавляет нас от всех этих вычислений:
@@ -64,6 +72,8 @@ z=lambda[z1, z2]=mu[z3, z4];
 \end{programlisting}
 Теперь пара~\literal z получит нужное значение.
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Команда \literal{whatever}}
 Обратите внимание на то, что из трёх найденных значений~$z$, $\lambda$, $\mu$
@@ -80,6 +90,8 @@ z=whatever[z1, z2]=whatever[z3, z4];
 \end{programlisting}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Команда \literal{whatever}}
 Команда \literal{whatever} создаёт новую безымянную числовую переменную
 и~тут~же её подставляет в~текст программы.
@@ -92,6 +104,8 @@ z=whatever[z1, z2]=whatever[z3, z4];
 числовую переменную, полностью независимую от других, созданных той~же
 командой.
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Пример: проекция точки на~прямую}
 \begin{columns}
@@ -112,6 +126,8 @@ z=whatever[z1, z2];
 \end{columns}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Пример: проекция точки на~прямую}
 \begin{columns}
 \column{.35\textwidth}
@@ -130,6 +146,8 @@ z=whatever[z3, z3+((z2-z1) rotated 90)];
 \end{programlisting}
 \end{columns}
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Способы придания значений переменным}
 В~\hologo{METAPOST} переменная может получить значение двумя способами:
@@ -151,12 +169,15 @@ z=whatever[z3, z3+((z2-z1) rotated 90)];
 \end{columns}
 \end{frame}
 
+%%%%%%%%%%
+
 \begin{frame}{Синтаксис присваивания}
-\begin{center}
+\centering
 \LARGE
 \replaceable{переменная}\literal{:=}\replaceable{выражение}\literal{;}
-\end{center}
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Синтаксис уравнения}
 \only<1>{%
@@ -175,6 +196,8 @@ z4-z1=z3-z2=(3, y5);
 \end{programlisting}
 }%
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Несовместные уравнения}
 \only<1->{%
@@ -195,6 +218,8 @@ x+y=1;\par
 }%
 \transdissolve<3>
 \end{frame}
+
+%%%%%%%%%%
 
 \begin{frame}{Избыточные уравнения}
 Уравнения, которые возможно преобразовать к~тривиальному уравнению
