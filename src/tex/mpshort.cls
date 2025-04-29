@@ -3,7 +3,7 @@
 
 \LoadClass[11pt,xcolor=svgnames]{beamer}
 \RequirePackage{luatex85}
-\RequirePackage[babelshorthands]{polyglossia}
+\RequirePackage{polyglossia}
 \RequirePackage{microtype}
 \RequirePackage{amsmath}
 \RequirePackage{graphicx}
@@ -12,7 +12,7 @@
 \RequirePackage{hologo}
 \RequirePackage{luamplib}
 
-\setdefaultlanguage{russian}
+\setmainlanguage[babelshorthands]{russian}
 \setotherlanguages{english,french}
 
 \setmainfont{Alegreya}[WordSpace=1.8]
