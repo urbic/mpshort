@@ -9,43 +9,43 @@ on:
 env:
   PRJ_NAME: mpshort
 jobs:
-  push:
+  build:
     runs-on: ubuntu-latest
-	container:
-	  image: opensuse/tumbleweed:latest
+    container:
+      image: opensuse/tumbleweed:latest
     permissions:
       packages: write
-      contents: read
+      contents: write
     steps:
-	  - name: Install dependencies
-	    run: |
-		  zypper -n --gpg-auto-import-keys ar -p1 \
-		    obs://M17N:fonts/openSUSE_Tumbleweed M17N:fonts
+      - name: Install dependencies
+        run: |
+          zypper -n --gpg-auto-import-keys ar -p1 \
+            obs://M17N:fonts/openSUSE_Tumbleweed M17N:fonts
           zypper -n --gpg-auto-import-keys in -y --no-recommends \
-		    ant{,-apache-resolver} \
-			git \
-			google-alegreya{,-sans}-fonts \
-			iosevka-fonts \
-			poppler-tools \
-			texlive-beamer \
-			texlive-fontawesome-fonts \
-			texlive-hologo \
-			texlive-hyphen-russian \
-			texlive-knuth-{lib,local} \
-			texlive-latexmk \
-			texlive-luamplib \
-			texlive-metapost \
-			texlive-mflogo{,-font} \
-			texlive-microtype \
-			texlive-piechartmp \
-			texlive-polyglossia \
-			texlive-xits
-	  - name: Checkout
+            ant{,-apache-resolver} \
+            git \
+            google-alegreya{,-sans}-fonts \
+            iosevka-fonts \
+            poppler-tools \
+            texlive-beamer \
+            texlive-fontawesome-fonts \
+            texlive-hologo \
+            texlive-hyphen-russian \
+            texlive-knuth-{lib,local} \
+            texlive-latexmk \
+            texlive-luamplib \
+            texlive-metapost \
+            texlive-mflogo{,-font} \
+            texlive-microtype \
+            texlive-piechartmp \
+            texlive-polyglossia \
+            texlive-xits
+      - name: Checkout
         uses: actions/checkout@v4
       - name: Configure Git
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
-	  - name: Build
+      - name: Build
         run: |
           ant
       - name: Deploy
