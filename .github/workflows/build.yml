@@ -1,0 +1,61 @@
+name: Build and deploy
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+    branches: [master]
+env:
+  PRJ_NAME: mpshort
+jobs:
+  push:
+    runs-on: ubuntu-latest
+	container:
+	  image: opensuse/tumbleweed:latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+	  - name: Install dependencies
+	    run: |
+		  zypper -n --gpg-auto-import-keys ar -p1 \
+		    obs://M17N:fonts/openSUSE_Tumbleweed M17N:fonts
+          zypper -n --gpg-auto-import-keys in -y --no-recommends \
+		    ant{,-apache-resolver} \
+			git \
+			google-alegreya{,-sans}-fonts \
+			iosevka-fonts \
+			poppler-tools \
+			texlive-beamer \
+			texlive-fontawesome-fonts \
+			texlive-hologo \
+			texlive-hyphen-russian \
+			texlive-knuth-{lib,local} \
+			texlive-latexmk \
+			texlive-luamplib \
+			texlive-metapost \
+			texlive-mflogo{,-font} \
+			texlive-microtype \
+			texlive-piechartmp \
+			texlive-polyglossia \
+			texlive-xits
+	  - name: Checkout
+        uses: actions/checkout@v4
+      - name: Configure Git
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+	  - name: Build
+        run: |
+          ant
+      - name: Deploy
+        uses: burnett01/rsync-deployments@7.0.2
+        with:
+          rsh: -oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=+ssh-rsa
+          switches: -avz --progress
+          path: target/${PRJ_NAME}.pdf target/${PRJ_NAME}-cover.svg
+          remote_path: ${{secrets.DEPLOY_PATH}}
+          remote_host: ${{secrets.DEPLOY_HOST}}
+          remote_port: ${{secrets.DEPLOY_PORT}}
+          remote_user: ${{secrets.DEPLOY_USER}}
+          remote_key: ${{secrets.DEPLOY_KEY}}
