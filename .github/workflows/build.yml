@@ -31,7 +31,6 @@ jobs:
             texlive-fontawesome-fonts \
             texlive-hologo \
             texlive-hyphen-russian \
-            texlive-knuth-{lib,local} \
             texlive-latexmk \
             texlive-luamplib \
             texlive-metapost \

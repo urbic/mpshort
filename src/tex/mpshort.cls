@@ -2,7 +2,6 @@
 \ProvidesClass{mpshort}[2025/02/09 -- shvetz.anton@gmail.com]
 
 \LoadClass[11pt,xcolor=svgnames]{beamer}
-\RequirePackage{luatex85}
 \RequirePackage{polyglossia}
 \RequirePackage{microtype}
 \RequirePackage{amsmath}
@@ -141,7 +140,7 @@
 
 \newcommand\slashfrac[2]{#1{\divslash}#2}
 
-\pdfpkresolution1200
+\pdfvariable pkresolution 1200
 %\hypersetup{pdfpagemode=FullScreen}
 
 \parskip=2ex plus.5ex minus.25ex
